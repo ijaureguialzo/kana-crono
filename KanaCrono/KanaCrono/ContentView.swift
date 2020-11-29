@@ -11,6 +11,11 @@ import AVFoundation
 struct ContentView: View {
 
     @State var etiqueta = "きゅ"
+    @State var romaji = "kyu"
+
+    @State private var verKana = true
+    @State private var verRomaji = true
+    @State private var audio = true
 
     @State var timeRemaining = 5
     @State private var value = 5
@@ -41,13 +46,37 @@ struct ContentView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal, 40)
 
-            Text(etiqueta)
-                .font(.custom("Hiragino Mincho ProN W3", size: 144))
-                .padding()
-                .foregroundColor(Color(.label))
-                .background(Color("Fondo"))
-                .cornerRadius(10.0)
+            VStack {
+                Text(etiqueta)
+                    .opacity(verKana ? 1 : 0)
+                    .font(.custom("Hiragino Mincho ProN W3", size: 144))
+                    .padding()
+                    .foregroundColor(Color(.label))
+                    .background(Color("Fondo"))
+                    .cornerRadius(10.0)
+
+                Text(romaji)
+                    .opacity(verRomaji ? 1 : 0)
+            }
                 .padding(.vertical, 20)
+
+            Divider()
+
+            HStack {
+                Toggle(isOn: $verKana) {
+                    Text("Kana")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                Toggle(isOn: $verRomaji) {
+                    Text("Romaji")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                Toggle(isOn: $audio) {
+                    Text("Audio")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+            }
+                .padding(.horizontal, 10)
 
             Divider()
 
@@ -94,16 +123,22 @@ struct ContentView: View {
     }
 
     func nuevoKana() {
-        etiqueta = kana(aleatorios: 1, silabarioSeleccionado, nivel: nivelSeleccionado)[0].0
+
+        let aleatorio = kana(aleatorios: 1, silabarioSeleccionado, nivel: nivelSeleccionado)[0]
+
+        etiqueta = aleatorio.0
+        romaji = aleatorio.1
 
         // REF: https://nshipster.com/avspeechsynthesizer/
-        let utterance = AVSpeechUtterance(string: etiqueta)
-        utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
-        utterance.rate = AVSpeechUtteranceMinimumSpeechRate
+        if audio {
+            let utterance = AVSpeechUtterance(string: etiqueta)
+            utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+            utterance.rate = AVSpeechUtteranceMinimumSpeechRate
 
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
-        synthesizer.pauseSpeaking(at: .word)
+            let synthesizer = AVSpeechSynthesizer()
+            synthesizer.speak(utterance)
+            synthesizer.pauseSpeaking(at: .word)
+        }
     }
 }
 
