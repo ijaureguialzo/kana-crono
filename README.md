@@ -1,2 +1,3 @@
-# kana-crono
+# KanaCrono
+
 Práctica de Kana con reloj.
