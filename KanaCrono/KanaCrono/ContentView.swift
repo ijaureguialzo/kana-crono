@@ -10,6 +10,8 @@ import AVFoundation
 
 struct ContentView: View {
 
+    @EnvironmentObject var config: Config
+
     @State var etiqueta = "きゅ"
     @State var romaji = "kyu"
 
@@ -19,9 +21,6 @@ struct ContentView: View {
 
     @State var timeRemaining = 5
     @State private var value = 5
-
-    @State private var silabarioSeleccionado = Silabario.hiragana
-    @State private var nivelSeleccionado = Nivel.basico
 
     // REF: https://www.hackingwithswift.com/books/ios-swiftui/changing-a-views-layout-in-response-to-size-classes
     @Environment(\.verticalSizeClass) var sizeClass
@@ -33,20 +32,7 @@ struct ContentView: View {
 
         if sizeClass == .regular {
             VStack {
-                VStack {
-                    Picker("Silabario", selection: $silabarioSeleccionado) {
-                        ForEach(Silabario.allCases, id: \.self) { silabario in
-                            Text(silabario.rawValue.capitalized)
-                        }
-                    }
-
-                    Picker("Nivel", selection: $nivelSeleccionado) {
-                        Text("Básico").tag(Nivel.basico)
-                        Text("Ten-Ten").tag(Nivel.tenten)
-                        Text("Compuestos").tag(Nivel.compuestos)
-                    }
-                }
-                    .pickerStyle(SegmentedPickerStyle())
+                Selectores()
                     .padding(.horizontal, 40)
 
                 VStack {
@@ -126,21 +112,8 @@ struct ContentView: View {
 
                 VStack {
 
-                    VStack {
-                        Picker("Silabario", selection: $silabarioSeleccionado) {
-                            ForEach(Silabario.allCases, id: \.self) { silabario in
-                                Text(silabario.rawValue.capitalized)
-                            }
-                        }
-
-                        Picker("Nivel", selection: $nivelSeleccionado) {
-                            Text("Básico").tag(Nivel.basico)
-                            Text("Ten-Ten").tag(Nivel.tenten)
-                            Text("Compuestos").tag(Nivel.compuestos)
-                        }
-                    }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .padding(.horizontal, 40)
+                    Selectores()
+                        .padding(.horizontal, 10)
 
                     Divider()
 
@@ -205,7 +178,7 @@ struct ContentView: View {
 
     func nuevoKana() {
 
-        let aleatorio = kana(aleatorios: 1, silabarioSeleccionado, nivel: nivelSeleccionado)[0]
+        let aleatorio = kana(aleatorios: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
 
         etiqueta = aleatorio.0
         romaji = aleatorio.1

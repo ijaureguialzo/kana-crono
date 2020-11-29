@@ -1,0 +1,36 @@
+//
+//  Selectores.swift
+//  KanaCrono
+//
+//  Created by Ion Jaureguialzo Sarasola on 29/11/20.
+//
+
+import SwiftUI
+
+struct Selectores: View {
+
+    @EnvironmentObject var config: Config
+
+    var body: some View {
+        VStack {
+            Picker("Silabario", selection: $config.silabarioSeleccionado) {
+                ForEach(Silabario.allCases, id: \.self) { silabario in
+                    Text(silabario.rawValue.capitalized)
+                }
+            }
+
+            Picker("Nivel", selection: $config.nivelSeleccionado) {
+                Text("Básico").tag(Nivel.basico)
+                Text("Ten-Ten").tag(Nivel.tenten)
+                Text("Compuestos").tag(Nivel.compuestos)
+            }
+        }
+            .pickerStyle(SegmentedPickerStyle())
+    }
+}
+
+struct Selectores_Previews: PreviewProvider {
+    static var previews: some View {
+        Selectores()
+    }
+}

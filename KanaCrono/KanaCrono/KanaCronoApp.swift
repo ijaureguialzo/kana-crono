@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct KanaCronoApp: App {
+
+    var config = Config()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(config)
         }
     }
 }

@@ -12,6 +12,8 @@
 		412281282573084B00FE373B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 412281272573084B00FE373B /* Assets.xcassets */; };
 		4122812B2573084B00FE373B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4122812A2573084B00FE373B /* Preview Assets.xcassets */; };
 		4122813425730E5E00FE373B /* Silabarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122813325730E5E00FE373B /* Silabarios.swift */; };
+		412727312573B0BF00C79819 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727302573B0BF00C79819 /* Config.swift */; };
+		412727352573B0EB00C79819 /* Selectores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727342573B0EB00C79819 /* Selectores.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		4122812A2573084B00FE373B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4122812C2573084B00FE373B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4122813325730E5E00FE373B /* Silabarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Silabarios.swift; sourceTree = "<group>"; };
+		412727302573B0BF00C79819 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		412727342573B0EB00C79819 /* Selectores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectores.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				412281232573084A00FE373B /* KanaCronoApp.swift */,
+				412727302573B0BF00C79819 /* Config.swift */,
 				412281252573084A00FE373B /* ContentView.swift */,
 				4122813325730E5E00FE373B /* Silabarios.swift */,
 				412281272573084B00FE373B /* Assets.xcassets */,
 				4122812C2573084B00FE373B /* Info.plist */,
 				412281292573084B00FE373B /* Preview Content */,
+				412727342573B0EB00C79819 /* Selectores.swift */,
 			);
 			path = KanaCrono;
 			sourceTree = "<group>";
@@ -142,6 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4122813425730E5E00FE373B /* Silabarios.swift in Sources */,
+				412727312573B0BF00C79819 /* Config.swift in Sources */,
+				412727352573B0EB00C79819 /* Selectores.swift in Sources */,
 				412281262573084A00FE373B /* ContentView.swift in Sources */,
 				412281242573084A00FE373B /* KanaCronoApp.swift in Sources */,
 			);
