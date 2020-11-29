@@ -82,7 +82,8 @@ struct ContentView: View {
                 VStack {
 
                     Selectores()
-                        .padding(.horizontal, 10)
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 20)
 
                     Divider()
 
@@ -90,29 +91,34 @@ struct ContentView: View {
 
                     Divider()
 
-                    Stepper(onIncrement: incrementStep,
-                        onDecrement: decrementStep) {
-                        Text("\(value) segundos")
+                    HStack {
+                        Stepper(onIncrement: incrementStep,
+                            onDecrement: decrementStep) {
+                            Text("\(value) segundos")
+                        }
+                            .padding(.horizontal, 20)
+
+                        Text("\(timeRemaining)")
+                            .onReceive(timer) { _ in
+                            if timeRemaining > 0 {
+                                timeRemaining -= 1
+                            } else {
+                                timeRemaining = value
+                                nuevoKana()
+                            }
+                        }
+                            .font(.system(size: 36))
+                            .frame(width: 80, height: 80, alignment: .center)
+                            .foregroundColor(.accentColor)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(40)
                     }
-                        .padding(.horizontal, 80)
+                        .padding(.horizontal, 20)
 
                     Divider()
-
-                    Text("\(timeRemaining)")
-                        .onReceive(timer) { _ in
-                        if timeRemaining > 0 {
-                            timeRemaining -= 1
-                        } else {
-                            timeRemaining = value
-                            nuevoKana()
-                        }
-                    }
-                        .font(.system(size: 36))
-                        .frame(width: 80, height: 80, alignment: .center)
-                        .foregroundColor(.accentColor)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(40)
                 }
+                    .padding(.horizontal, 10)
+
             }
         }
     }
