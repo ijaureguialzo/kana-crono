@@ -100,7 +100,7 @@ enum Nivel: String, CaseIterable, Identifiable {
 /**
  Devuelve un array de n tuplas del tipo (kana: "あ", romaji: "a") extraidas del silabario seleccionado
  */
-func kana(aleatorios: Int, _ silabario: Silabario = .hiragana, nivel: Nivel = .basico) -> [(String, String)] {
+func tuplasKana(cantidad aleatorios: Int, _ silabario: Silabario = .hiragana, nivel: Nivel = .basico) -> [(kana: String, romaji: String)] {
 
     var kana = [(kana: String, romaji: String)]()
 

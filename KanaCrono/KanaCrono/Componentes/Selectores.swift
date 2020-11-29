@@ -31,6 +31,12 @@ struct Selectores: View {
 
 struct Selectores_Previews: PreviewProvider {
     static var previews: some View {
-        Selectores()
+        Selectores_CustomPreview()
+    }
+}
+
+struct Selectores_CustomPreview: View {
+    var body: some View {
+        Selectores().environmentObject(Config())
     }
 }

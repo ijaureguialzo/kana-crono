@@ -12,7 +12,7 @@ struct ContentView: View {
 
     @EnvironmentObject var config: Config
 
-    @State var etiqueta = "きゅ"
+    @State var kana = "きゅ"
     @State var romaji = "kyu"
 
     @State var timeRemaining = 5
@@ -32,14 +32,7 @@ struct ContentView: View {
                     .padding(.horizontal, 40)
 
                 VStack {
-                    Text(etiqueta)
-                        .frame(minWidth: 300)
-                        .opacity(config.verKana ? 1 : 0)
-                        .font(.custom("Hiragino Mincho ProN W3", size: 144))
-                        .padding()
-                        .foregroundColor(Color(.label))
-                        .background(Color("Fondo"))
-                        .cornerRadius(10.0)
+                    Kana(etiqueta: $kana)
 
                     Text(romaji)
                         .opacity(config.verRomaji ? 1 : 0)
@@ -79,14 +72,7 @@ struct ContentView: View {
         } else {
             HStack {
                 VStack {
-                    Text(etiqueta)
-                        .frame(minWidth: 300)
-                        .opacity(config.verKana ? 1 : 0)
-                        .font(.custom("Hiragino Mincho ProN W3", size: 144))
-                        .padding()
-                        .foregroundColor(Color(.label))
-                        .background(Color("Fondo"))
-                        .cornerRadius(10.0)
+                    Kana(etiqueta: $kana)
 
                     Text(romaji)
                         .opacity(config.verRomaji ? 1 : 0)
@@ -147,14 +133,14 @@ struct ContentView: View {
 
     func nuevoKana() {
 
-        let aleatorio = kana(aleatorios: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
+        let aleatorio = tuplasKana(cantidad: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
 
-        etiqueta = aleatorio.0
-        romaji = aleatorio.1
+        kana = aleatorio.kana
+        romaji = aleatorio.romaji
 
         // REF: https://nshipster.com/avspeechsynthesizer/
         if config.audio {
-            let utterance = AVSpeechUtterance(string: etiqueta)
+            let utterance = AVSpeechUtterance(string: kana)
             utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
             utterance.rate = AVSpeechUtteranceMinimumSpeechRate
 
@@ -165,8 +151,15 @@ struct ContentView: View {
     }
 }
 
+// REF: https://developer.apple.com/forums/thread/118589?answerId=398398022#398398022
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView_CustomPreview()
+    }
+}
+
+struct ContentView_CustomPreview: View {
+    var body: some View {
+        ContentView().environmentObject(Config())
     }
 }

@@ -15,6 +15,7 @@
 		412727312573B0BF00C79819 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727302573B0BF00C79819 /* Config.swift */; };
 		412727352573B0EB00C79819 /* Selectores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727342573B0EB00C79819 /* Selectores.swift */; };
 		412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727372573B26F00C79819 /* OpcionesVisibilidad.swift */; };
+		4127273D2574369000C79819 /* Kana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4127273C2574369000C79819 /* Kana.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		412727302573B0BF00C79819 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		412727342573B0EB00C79819 /* Selectores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectores.swift; sourceTree = "<group>"; };
 		412727372573B26F00C79819 /* OpcionesVisibilidad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpcionesVisibilidad.swift; sourceTree = "<group>"; };
+		4127273C2574369000C79819 /* Kana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kana.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				412727342573B0EB00C79819 /* Selectores.swift */,
 				412727372573B26F00C79819 /* OpcionesVisibilidad.swift */,
+				4127273C2574369000C79819 /* Kana.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				412727312573B0BF00C79819 /* Config.swift in Sources */,
 				412727352573B0EB00C79819 /* Selectores.swift in Sources */,
 				412281262573084A00FE373B /* ContentView.swift in Sources */,
+				4127273D2574369000C79819 /* Kana.swift in Sources */,
 				412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */,
 				412281242573084A00FE373B /* KanaCronoApp.swift in Sources */,
 			);

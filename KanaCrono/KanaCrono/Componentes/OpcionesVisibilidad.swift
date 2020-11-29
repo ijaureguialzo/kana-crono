@@ -31,6 +31,12 @@ struct OpcionesVisibilidad: View {
 
 struct OpcionesVisibilidad_Previews: PreviewProvider {
     static var previews: some View {
-        OpcionesVisibilidad()
+        OpcionesVisibilidad_CustomPreview()
+    }
+}
+
+struct OpcionesVisibilidad_CustomPreview: View {
+    var body: some View {
+        OpcionesVisibilidad().environmentObject(Config())
     }
 }
