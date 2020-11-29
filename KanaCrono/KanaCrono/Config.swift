@@ -11,4 +11,8 @@ import Foundation
 class Config: ObservableObject {
     @Published var silabarioSeleccionado = Silabario.hiragana
     @Published var nivelSeleccionado = Nivel.basico
+
+    @Published var verKana = true
+    @Published var verRomaji = true
+    @Published var audio = false
 }

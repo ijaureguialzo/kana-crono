@@ -14,6 +14,7 @@
 		4122813425730E5E00FE373B /* Silabarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122813325730E5E00FE373B /* Silabarios.swift */; };
 		412727312573B0BF00C79819 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727302573B0BF00C79819 /* Config.swift */; };
 		412727352573B0EB00C79819 /* Selectores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727342573B0EB00C79819 /* Selectores.swift */; };
+		412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727372573B26F00C79819 /* OpcionesVisibilidad.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4122813325730E5E00FE373B /* Silabarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Silabarios.swift; sourceTree = "<group>"; };
 		412727302573B0BF00C79819 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		412727342573B0EB00C79819 /* Selectores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectores.swift; sourceTree = "<group>"; };
+		412727372573B26F00C79819 /* OpcionesVisibilidad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpcionesVisibilidad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +63,11 @@
 				412281232573084A00FE373B /* KanaCronoApp.swift */,
 				412727302573B0BF00C79819 /* Config.swift */,
 				412281252573084A00FE373B /* ContentView.swift */,
+				4127273A2573B38300C79819 /* Componentes */,
 				4122813325730E5E00FE373B /* Silabarios.swift */,
 				412281272573084B00FE373B /* Assets.xcassets */,
 				4122812C2573084B00FE373B /* Info.plist */,
 				412281292573084B00FE373B /* Preview Content */,
-				412727342573B0EB00C79819 /* Selectores.swift */,
 			);
 			path = KanaCrono;
 			sourceTree = "<group>";
@@ -76,6 +78,15 @@
 				4122812A2573084B00FE373B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4127273A2573B38300C79819 /* Componentes */ = {
+			isa = PBXGroup;
+			children = (
+				412727342573B0EB00C79819 /* Selectores.swift */,
+				412727372573B26F00C79819 /* OpcionesVisibilidad.swift */,
+			);
+			path = Componentes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 				412727312573B0BF00C79819 /* Config.swift in Sources */,
 				412727352573B0EB00C79819 /* Selectores.swift in Sources */,
 				412281262573084A00FE373B /* ContentView.swift in Sources */,
+				412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */,
 				412281242573084A00FE373B /* KanaCronoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

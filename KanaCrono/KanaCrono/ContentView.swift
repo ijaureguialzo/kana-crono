@@ -15,10 +15,6 @@ struct ContentView: View {
     @State var etiqueta = "きゅ"
     @State var romaji = "kyu"
 
-    @State private var verKana = true
-    @State private var verRomaji = true
-    @State private var audio = true
-
     @State var timeRemaining = 5
     @State private var value = 5
 
@@ -38,7 +34,7 @@ struct ContentView: View {
                 VStack {
                     Text(etiqueta)
                         .frame(minWidth: 300)
-                        .opacity(verKana ? 1 : 0)
+                        .opacity(config.verKana ? 1 : 0)
                         .font(.custom("Hiragino Mincho ProN W3", size: 144))
                         .padding()
                         .foregroundColor(Color(.label))
@@ -46,26 +42,13 @@ struct ContentView: View {
                         .cornerRadius(10.0)
 
                     Text(romaji)
-                        .opacity(verRomaji ? 1 : 0)
+                        .opacity(config.verRomaji ? 1 : 0)
                 }
                     .padding(.vertical, 20)
 
                 Divider()
 
-                HStack {
-                    Toggle(isOn: $verKana) {
-                        Text("Kana")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    Toggle(isOn: $verRomaji) {
-                        Text("Romaji")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    Toggle(isOn: $audio) {
-                        Text("Audio")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                }
+                OpcionesVisibilidad()
                     .padding(.horizontal, 10)
 
                 Divider()
@@ -98,7 +81,7 @@ struct ContentView: View {
                 VStack {
                     Text(etiqueta)
                         .frame(minWidth: 300)
-                        .opacity(verKana ? 1 : 0)
+                        .opacity(config.verKana ? 1 : 0)
                         .font(.custom("Hiragino Mincho ProN W3", size: 144))
                         .padding()
                         .foregroundColor(Color(.label))
@@ -106,7 +89,7 @@ struct ContentView: View {
                         .cornerRadius(10.0)
 
                     Text(romaji)
-                        .opacity(verRomaji ? 1 : 0)
+                        .opacity(config.verRomaji ? 1 : 0)
                 }
                     .padding(.vertical, 20)
 
@@ -117,21 +100,7 @@ struct ContentView: View {
 
                     Divider()
 
-                    HStack {
-                        Toggle(isOn: $verKana) {
-                            Text("Kana")
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                        Toggle(isOn: $verRomaji) {
-                            Text("Romaji")
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                        Toggle(isOn: $audio) {
-                            Text("Audio")
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                    }
-                        .padding(.horizontal, 10)
+                    OpcionesVisibilidad()
 
                     Divider()
 
@@ -184,7 +153,7 @@ struct ContentView: View {
         romaji = aleatorio.1
 
         // REF: https://nshipster.com/avspeechsynthesizer/
-        if audio {
+        if config.audio {
             let utterance = AVSpeechUtterance(string: etiqueta)
             utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
             utterance.rate = AVSpeechUtteranceMinimumSpeechRate
