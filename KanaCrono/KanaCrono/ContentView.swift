@@ -75,6 +75,9 @@ struct ContentView: View {
 
                     Text("\(timeRemaining)")
                         .onReceive(timer) { _ in
+
+                        timerRunning = true
+
                         if timeRemaining > 0 {
                             timeRemaining -= 1
                         } else {
@@ -151,6 +154,9 @@ struct ContentView: View {
 
                             Text("\(timeRemaining)")
                                 .onReceive(timer) { _ in
+
+                                timerRunning = true
+
                                 if timeRemaining > 0 {
                                     timeRemaining -= 1
                                 } else {
