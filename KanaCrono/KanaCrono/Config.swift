@@ -13,6 +13,7 @@ class Config: ObservableObject {
     @Published var nivelSeleccionado = Nivel.basico
 
     @Published var verKana = true
+    @Published var verKanaTemporal = false
     @Published var verRomaji = true
     @Published var audio = false
 }

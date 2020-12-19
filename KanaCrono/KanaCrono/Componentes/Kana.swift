@@ -13,15 +13,28 @@ struct Kana: View {
 
     @Binding var etiqueta: String
 
+    var transparencia: Double {
+        get {
+            return config.verKanaTemporal ? 1 : config.verKana ? 1 : 0
+        }
+    }
+
+    // REF: https://www.answertopia.com/swiftui/working-with-gesture-recognizers-in-swiftui/
     var body: some View {
         Text(etiqueta)
             .frame(minWidth: 300)
-            .opacity(config.verKana ? 1 : 0)
+            .opacity(transparencia)
             .font(.custom("Hiragino Mincho ProN W3", size: 144))
             .padding()
             .foregroundColor(Color(.label))
             .background(Color("Fondo"))
             .cornerRadius(10.0)
+            .gesture(
+            TapGesture()
+                .onEnded { _ in
+                config.verKanaTemporal = true
+            }
+        )
     }
 }
 
