@@ -22,9 +22,9 @@ struct Kana: View {
     // REF: https://www.answertopia.com/swiftui/working-with-gesture-recognizers-in-swiftui/
     var body: some View {
         Text(etiqueta)
-            .frame(minWidth: 300)
+            .frame(minWidth: 220)
             .opacity(transparencia)
-            .font(.custom("Hiragino Mincho ProN W3", size: 144))
+            .font(.custom("Hiragino Mincho ProN W3", size: 100))
             .padding()
             .foregroundColor(Color(.label))
             .background(Color("Fondo"))

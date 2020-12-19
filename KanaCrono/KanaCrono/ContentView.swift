@@ -35,7 +35,7 @@ struct ContentView: View {
                     Kana(etiqueta: $kana)
                     Romaji(etiqueta: $romaji)
                 }
-                    .padding(.vertical, 20)
+                    .padding(20)
 
                 Divider()
 
@@ -73,7 +73,7 @@ struct ContentView: View {
                     Kana(etiqueta: $kana)
                     Romaji(etiqueta: $romaji)
                 }
-                    .padding(.vertical, 20)
+                    .padding(20)
 
                 VStack {
 
