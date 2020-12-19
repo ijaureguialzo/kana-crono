@@ -22,7 +22,8 @@ struct ContentView: View {
     @Environment(\.verticalSizeClass) var sizeClass
 
     // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-a-timer-with-swiftui
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var timerRunning = true
 
     var body: some View {
 
@@ -52,20 +53,50 @@ struct ContentView: View {
 
                 Divider()
 
-                Text("\(timeRemaining)")
-                    .onReceive(timer) { _ in
-                    if timeRemaining > 0 {
-                        timeRemaining -= 1
-                    } else {
+                HStack(spacing: 20) {
+
+                    Button(action: {
+                        if timerRunning {
+                            timer.upstream.connect().cancel()
+                            timerRunning = false
+                        } else {
+                            timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                            timerRunning = true
+                        }
+                    }) {
+                        if timerRunning {
+                            Image(systemName: "pause.fill")
+                                .font(.title)
+                        } else {
+                            Image(systemName: "play.fill")
+                                .font(.title)
+                        }
+                    }
+
+                    Text("\(timeRemaining)")
+                        .onReceive(timer) { _ in
+                        if timeRemaining > 0 {
+                            timeRemaining -= 1
+                        } else {
+                            timeRemaining = value
+                            nuevoKana()
+                        }
+                    }
+                        .font(.system(size: 36))
+                        .frame(width: 80, height: 80, alignment: .center)
+                        .foregroundColor(.accentColor)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(40)
+
+                    Button(action: {
                         timeRemaining = value
                         nuevoKana()
+                    }) {
+                        Image(systemName: "forward.fill")
+                            .font(.title)
                     }
+
                 }
-                    .font(.system(size: 36))
-                    .frame(width: 80, height: 80, alignment: .center)
-                    .foregroundColor(.accentColor)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(40)
             }
         } else {
             HStack {
@@ -94,20 +125,50 @@ struct ContentView: View {
                         }
                             .padding(.horizontal, 20)
 
-                        Text("\(timeRemaining)")
-                            .onReceive(timer) { _ in
-                            if timeRemaining > 0 {
-                                timeRemaining -= 1
-                            } else {
+                        HStack(spacing: 20) {
+
+                            Button(action: {
+                                if timerRunning {
+                                    timer.upstream.connect().cancel()
+                                    timerRunning = false
+                                } else {
+                                    timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                                    timerRunning = true
+                                }
+                            }) {
+                                if timerRunning {
+                                    Image(systemName: "pause.fill")
+                                        .font(.title)
+                                } else {
+                                    Image(systemName: "play.fill")
+                                        .font(.title)
+                                }
+                            }
+
+                            Text("\(timeRemaining)")
+                                .onReceive(timer) { _ in
+                                if timeRemaining > 0 {
+                                    timeRemaining -= 1
+                                } else {
+                                    timeRemaining = value
+                                    nuevoKana()
+                                }
+                            }
+                                .font(.system(size: 36))
+                                .frame(width: 80, height: 80, alignment: .center)
+                                .foregroundColor(.accentColor)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(40)
+
+                            Button(action: {
                                 timeRemaining = value
                                 nuevoKana()
+                            }) {
+                                Image(systemName: "forward.fill")
+                                    .font(.title)
                             }
+
                         }
-                            .font(.system(size: 36))
-                            .frame(width: 80, height: 80, alignment: .center)
-                            .foregroundColor(.accentColor)
-                            .background(Color(.systemGray6))
-                            .cornerRadius(40)
                     }
                         .padding(.horizontal, 20)
 
