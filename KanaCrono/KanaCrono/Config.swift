@@ -15,5 +15,6 @@ class Config: ObservableObject {
     @Published var verKana = true
     @Published var verKanaTemporal = false
     @Published var verRomaji = true
+    @Published var verRomajiTemporal = false
     @Published var audio = false
 }

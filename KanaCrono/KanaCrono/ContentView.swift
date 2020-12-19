@@ -135,6 +135,7 @@ struct ContentView: View {
     func nuevoKana() {
 
         config.verKanaTemporal = false
+        config.verRomajiTemporal = false
 
         let aleatorio = tuplasKana(cantidad: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
 
