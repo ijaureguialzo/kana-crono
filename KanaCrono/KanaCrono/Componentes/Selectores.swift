@@ -21,8 +21,8 @@ struct Selectores: View {
 
             Picker("Nivel", selection: $config.nivelSeleccionado) {
                 Text("Básico").tag(Nivel.basico)
-                Text("Ten-Ten").tag(Nivel.tenten)
-                Text("Compuestos").tag(Nivel.compuestos)
+                Text("Diacríticos").tag(Nivel.tenten)
+                Text("Dígrafos").tag(Nivel.compuestos)
             }
         }
             .pickerStyle(SegmentedPickerStyle())
