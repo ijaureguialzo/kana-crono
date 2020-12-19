@@ -76,13 +76,15 @@ struct ContentView: View {
                     Text("\(timeRemaining)")
                         .onReceive(timer) { _ in
 
-                        timerRunning = true
-
-                        if timeRemaining > 0 {
-                            timeRemaining -= 1
+                        if !timerRunning {
+                            timer.upstream.connect().cancel()
                         } else {
-                            timeRemaining = value
-                            nuevoKana()
+                            if timeRemaining > 0 {
+                                timeRemaining -= 1
+                            } else {
+                                timeRemaining = value
+                                nuevoKana()
+                            }
                         }
                     }
                         .font(.system(size: 36))
@@ -155,13 +157,15 @@ struct ContentView: View {
                             Text("\(timeRemaining)")
                                 .onReceive(timer) { _ in
 
-                                timerRunning = true
-
-                                if timeRemaining > 0 {
-                                    timeRemaining -= 1
+                                if !timerRunning {
+                                    timer.upstream.connect().cancel()
                                 } else {
-                                    timeRemaining = value
-                                    nuevoKana()
+                                    if timeRemaining > 0 {
+                                        timeRemaining -= 1
+                                    } else {
+                                        timeRemaining = value
+                                        nuevoKana()
+                                    }
                                 }
                             }
                                 .font(.system(size: 36))
