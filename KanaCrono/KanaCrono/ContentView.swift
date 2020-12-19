@@ -119,11 +119,15 @@ struct ContentView: View {
                     Divider()
 
                     HStack {
-                        Stepper(onIncrement: incrementStep,
-                            onDecrement: decrementStep) {
+                        VStack {
+                            Stepper("", onIncrement: incrementStep,
+                                onDecrement: decrementStep)
+                                .labelsHidden()
                             Text("\(value) segundos")
                         }
                             .padding(.horizontal, 20)
+
+                        Spacer()
 
                         HStack(spacing: 20) {
 
