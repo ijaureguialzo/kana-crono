@@ -29,12 +29,9 @@ struct Kana: View {
             .foregroundColor(Color(.label))
             .background(Color("Fondo"))
             .cornerRadius(10.0)
-            .gesture(
-            TapGesture()
-                .onEnded { _ in
+            .gesture(TapGesture().onEnded { _ in
                 config.verKanaTemporal = true
-            }
-        )
+            })
     }
 }
 
