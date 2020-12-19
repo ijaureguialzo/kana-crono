@@ -115,7 +115,6 @@ struct ContentView: View {
                     }
                         .padding(.horizontal, 20)
 
-                    Divider()
                 }
                     .padding(.horizontal, 10)
 
