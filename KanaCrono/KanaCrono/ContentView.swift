@@ -33,9 +33,7 @@ struct ContentView: View {
 
                 VStack {
                     Kana(etiqueta: $kana)
-
-                    Text(romaji)
-                        .opacity(config.verRomaji ? 1 : 0)
+                    Romaji(etiqueta: $romaji)
                 }
                     .padding(.vertical, 20)
 
@@ -73,9 +71,7 @@ struct ContentView: View {
             HStack {
                 VStack {
                     Kana(etiqueta: $kana)
-
-                    Text(romaji)
-                        .opacity(config.verRomaji ? 1 : 0)
+                    Romaji(etiqueta: $romaji)
                 }
                     .padding(.vertical, 20)
 
