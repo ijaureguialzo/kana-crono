@@ -46,6 +46,14 @@ struct Reloj: View {
                 .onChange(of: segundos) { _ in
                 timeRemaining = segundos
             }
+                .onChange(of: config.silabarioSeleccionado) { _ in
+                timeRemaining = segundos
+                nuevoKana()
+            }
+                .onChange(of: config.nivelSeleccionado) { _ in
+                timeRemaining = segundos
+                nuevoKana()
+            }
                 .onReceive(timer) { _ in
 
                 if !timerRunning {
