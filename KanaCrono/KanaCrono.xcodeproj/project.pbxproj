@@ -18,6 +18,7 @@
 		4127273D2574369000C79819 /* Kana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4127273C2574369000C79819 /* Kana.swift */; };
 		41B0D361258E3615001B9C36 /* Romaji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B0D360258E3615001B9C36 /* Romaji.swift */; };
 		41CF4036258F618900A9D78F /* Reloj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CF4035258F618900A9D78F /* Reloj.swift */; };
+		41CF403D258F6A7600A9D78F /* StepperSegundos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CF403C258F6A7600A9D78F /* StepperSegundos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4127273C2574369000C79819 /* Kana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kana.swift; sourceTree = "<group>"; };
 		41B0D360258E3615001B9C36 /* Romaji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Romaji.swift; sourceTree = "<group>"; };
 		41CF4035258F618900A9D78F /* Reloj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reloj.swift; sourceTree = "<group>"; };
+		41CF403C258F6A7600A9D78F /* StepperSegundos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperSegundos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				4127273C2574369000C79819 /* Kana.swift */,
 				41B0D360258E3615001B9C36 /* Romaji.swift */,
 				41CF4035258F618900A9D78F /* Reloj.swift */,
+				41CF403C258F6A7600A9D78F /* StepperSegundos.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				412281262573084A00FE373B /* ContentView.swift in Sources */,
 				4127273D2574369000C79819 /* Kana.swift in Sources */,
 				412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */,
+				41CF403D258F6A7600A9D78F /* StepperSegundos.swift in Sources */,
 				412281242573084A00FE373B /* KanaCronoApp.swift in Sources */,
 				41CF4036258F618900A9D78F /* Reloj.swift in Sources */,
 			);

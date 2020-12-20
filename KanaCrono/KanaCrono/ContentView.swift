@@ -38,10 +38,7 @@ struct ContentView: View {
 
                 Divider()
 
-                Stepper(onIncrement: incrementStep,
-                    onDecrement: decrementStep) {
-                    Text("\(segundos) segundos")
-                }
+                StepperSegundos(segundos: $segundos)
                     .padding(.horizontal, 80)
 
                 Divider()
@@ -69,12 +66,7 @@ struct ContentView: View {
                     Divider()
 
                     HStack {
-                        VStack {
-                            Stepper("", onIncrement: incrementStep,
-                                onDecrement: decrementStep)
-                                .labelsHidden()
-                            Text("\(segundos) segundos")
-                        }
+                        StepperSegundos(segundos: $segundos)
                             .padding(.horizontal, 20)
 
                         Spacer()
@@ -88,20 +80,6 @@ struct ContentView: View {
 
             }
         }
-    }
-
-    func incrementStep() {
-        segundos += 1
-        if segundos >= 60 { segundos = 60 }
-        //self.timeRemaining = value
-    }
-
-    func decrementStep() {
-        segundos -= 1
-        if segundos < 2 {
-            segundos = 2
-        }
-        //self.timeRemaining = value
     }
 }
 
