@@ -16,10 +16,21 @@
 		412727352573B0EB00C79819 /* Selectores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727342573B0EB00C79819 /* Selectores.swift */; };
 		412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727372573B26F00C79819 /* OpcionesVisibilidad.swift */; };
 		4127273D2574369000C79819 /* Kana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4127273C2574369000C79819 /* Kana.swift */; };
+		415EBF43258FCA8900FDF680 /* KanaCronoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415EBF42258FCA8900FDF680 /* KanaCronoUITests.swift */; };
 		41B0D361258E3615001B9C36 /* Romaji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B0D360258E3615001B9C36 /* Romaji.swift */; };
 		41CF4036258F618900A9D78F /* Reloj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CF4035258F618900A9D78F /* Reloj.swift */; };
 		41CF403D258F6A7600A9D78F /* StepperSegundos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CF403C258F6A7600A9D78F /* StepperSegundos.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		415EBF45258FCA8900FDF680 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 412281182573084A00FE373B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4122811F2573084A00FE373B;
+			remoteInfo = KanaCrono;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		412281202573084A00FE373B /* KanaCrono.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanaCrono.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +44,9 @@
 		412727342573B0EB00C79819 /* Selectores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectores.swift; sourceTree = "<group>"; };
 		412727372573B26F00C79819 /* OpcionesVisibilidad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpcionesVisibilidad.swift; sourceTree = "<group>"; };
 		4127273C2574369000C79819 /* Kana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kana.swift; sourceTree = "<group>"; };
+		415EBF40258FCA8900FDF680 /* KanaCronoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanaCronoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		415EBF42258FCA8900FDF680 /* KanaCronoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanaCronoUITests.swift; sourceTree = "<group>"; };
+		415EBF44258FCA8900FDF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41B0D360258E3615001B9C36 /* Romaji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Romaji.swift; sourceTree = "<group>"; };
 		41CF4035258F618900A9D78F /* Reloj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reloj.swift; sourceTree = "<group>"; };
 		41CF403C258F6A7600A9D78F /* StepperSegundos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperSegundos.swift; sourceTree = "<group>"; };
@@ -46,6 +60,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		415EBF3D258FCA8900FDF680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -53,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				412281222573084A00FE373B /* KanaCrono */,
+				415EBF41258FCA8900FDF680 /* KanaCronoUITests */,
 				412281212573084A00FE373B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				412281202573084A00FE373B /* KanaCrono.app */,
+				415EBF40258FCA8900FDF680 /* KanaCronoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +124,15 @@
 			path = Componentes;
 			sourceTree = "<group>";
 		};
+		415EBF41258FCA8900FDF680 /* KanaCronoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				415EBF42258FCA8900FDF680 /* KanaCronoUITests.swift */,
+				415EBF44258FCA8900FDF680 /* Info.plist */,
+			);
+			path = KanaCronoUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,17 +153,39 @@
 			productReference = 412281202573084A00FE373B /* KanaCrono.app */;
 			productType = "com.apple.product-type.application";
 		};
+		415EBF3F258FCA8900FDF680 /* KanaCronoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 415EBF49258FCA8900FDF680 /* Build configuration list for PBXNativeTarget "KanaCronoUITests" */;
+			buildPhases = (
+				415EBF3C258FCA8900FDF680 /* Sources */,
+				415EBF3D258FCA8900FDF680 /* Frameworks */,
+				415EBF3E258FCA8900FDF680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				415EBF46258FCA8900FDF680 /* PBXTargetDependency */,
+			);
+			name = KanaCronoUITests;
+			productName = KanaCronoUITests;
+			productReference = 415EBF40258FCA8900FDF680 /* KanaCronoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		412281182573084A00FE373B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					4122811F2573084A00FE373B = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					415EBF3F258FCA8900FDF680 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 4122811F2573084A00FE373B;
 					};
 				};
 			};
@@ -149,6 +203,7 @@
 			projectRoot = "";
 			targets = (
 				4122811F2573084A00FE373B /* KanaCrono */,
+				415EBF3F258FCA8900FDF680 /* KanaCronoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -160,6 +215,13 @@
 			files = (
 				4122812B2573084B00FE373B /* Preview Assets.xcassets in Resources */,
 				412281282573084B00FE373B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		415EBF3E258FCA8900FDF680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +245,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		415EBF3C258FCA8900FDF680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				415EBF43258FCA8900FDF680 /* KanaCronoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		415EBF46258FCA8900FDF680 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4122811F2573084A00FE373B /* KanaCrono */;
+			targetProxy = 415EBF45258FCA8900FDF680 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4122812D2573084B00FE373B /* Debug */ = {
@@ -350,6 +428,46 @@
 			};
 			name = Release;
 		};
+		415EBF47258FCA8900FDF680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RSEH385M54;
+				INFOPLIST_FILE = KanaCronoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaureguialzo.KanaCronoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KanaCrono;
+			};
+			name = Debug;
+		};
+		415EBF48258FCA8900FDF680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RSEH385M54;
+				INFOPLIST_FILE = KanaCronoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaureguialzo.KanaCronoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KanaCrono;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -367,6 +485,15 @@
 			buildConfigurations = (
 				412281302573084B00FE373B /* Debug */,
 				412281312573084B00FE373B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		415EBF49258FCA8900FDF680 /* Build configuration list for PBXNativeTarget "KanaCronoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				415EBF47258FCA8900FDF680 /* Debug */,
+				415EBF48258FCA8900FDF680 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
