@@ -46,6 +46,10 @@ struct Reloj: View {
                 .onChange(of: segundos) { _ in
                 timeRemaining = segundos
             }
+                .gesture(TapGesture().onEnded { _ in
+                    config.verKanaTemporal = true
+                    config.verRomajiTemporal = true
+                })
                 .onChange(of: config.silabarioSeleccionado) { _ in
                 timeRemaining = segundos
                 nuevoKana()
