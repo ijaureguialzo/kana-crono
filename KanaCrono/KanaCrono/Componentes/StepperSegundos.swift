@@ -18,14 +18,14 @@ struct StepperSegundos: View {
             Stepper(onIncrement: incrementStep,
                 onDecrement: decrementStep) {
                 Text("\(segundos) segundos")
-            }
+            } .scaleEffect(0.8)
         } else {
             VStack {
                 Stepper("", onIncrement: incrementStep,
                     onDecrement: decrementStep)
                     .labelsHidden()
                 Text("\(segundos) segundos")
-            }
+            } .scaleEffect(0.8)
         }
     }
 

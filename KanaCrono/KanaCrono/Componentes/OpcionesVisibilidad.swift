@@ -26,6 +26,7 @@ struct OpcionesVisibilidad: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
+            .scaleEffect(0.8)
     }
 }
 
