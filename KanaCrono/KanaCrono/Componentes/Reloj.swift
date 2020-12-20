@@ -85,7 +85,10 @@ struct Reloj: View {
                     .font(.title)
             }
 
-        }
+        }.onAppear(perform: {
+            timeRemaining = segundos
+            nuevoKana()
+        })
     }
 
     func nuevoKana() {
