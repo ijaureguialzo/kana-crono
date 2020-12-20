@@ -12,9 +12,19 @@ class Config: ObservableObject {
     @Published var silabarioSeleccionado = Silabario.hiragana
     @Published var nivelSeleccionado = Nivel.basico
 
-    @Published var verKana = true
+    @Published var verKana = true {
+        didSet {
+            verKanaTemporal = verKana
+        }
+    }
     @Published var verKanaTemporal = false
-    @Published var verRomaji = true
+
+    @Published var verRomaji = true {
+        didSet {
+            verRomajiTemporal = verRomaji
+        }
+    }
     @Published var verRomajiTemporal = false
+
     @Published var audio = false
 }
