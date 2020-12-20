@@ -6,24 +6,17 @@
 //
 
 import SwiftUI
-import AVFoundation
 
 struct ContentView: View {
-
-    @EnvironmentObject var config: Config
-
-    @State var kana = "きゅ"
-    @State var romaji = "kyu"
-
-    @State var timeRemaining = 5
-    @State private var value = 5
 
     // REF: https://www.hackingwithswift.com/books/ios-swiftui/changing-a-views-layout-in-response-to-size-classes
     @Environment(\.verticalSizeClass) var sizeClass
 
-    // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-a-timer-with-swiftui
-    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timerRunning = true
+    @EnvironmentObject var config: Config
+
+    @State private var kana = "きゅ"
+    @State private var romaji = "kyu"
+    @State private var segundos = 5
 
     var body: some View {
 
@@ -47,61 +40,13 @@ struct ContentView: View {
 
                 Stepper(onIncrement: incrementStep,
                     onDecrement: decrementStep) {
-                    Text("\(value) segundos")
+                    Text("\(segundos) segundos")
                 }
                     .padding(.horizontal, 80)
 
                 Divider()
 
-                HStack(spacing: 20) {
-
-                    Button(action: {
-                        if timerRunning {
-                            timer.upstream.connect().cancel()
-                            timerRunning = false
-                        } else {
-                            timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                            timerRunning = true
-                        }
-                    }) {
-                        if timerRunning {
-                            Image(systemName: "pause.fill")
-                                .font(.title)
-                        } else {
-                            Image(systemName: "play.fill")
-                                .font(.title)
-                        }
-                    }
-
-                    Text("\(timeRemaining)")
-                        .onReceive(timer) { _ in
-
-                        if !timerRunning {
-                            timer.upstream.connect().cancel()
-                        } else {
-                            if timeRemaining > 0 {
-                                timeRemaining -= 1
-                            } else {
-                                timeRemaining = value
-                                nuevoKana()
-                            }
-                        }
-                    }
-                        .font(.system(size: 36))
-                        .frame(width: 80, height: 80, alignment: .center)
-                        .foregroundColor(.accentColor)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(40)
-
-                    Button(action: {
-                        timeRemaining = value
-                        nuevoKana()
-                    }) {
-                        Image(systemName: "forward.fill")
-                            .font(.title)
-                    }
-
-                }
+                Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
             }
         } else {
             HStack {
@@ -128,61 +73,13 @@ struct ContentView: View {
                             Stepper("", onIncrement: incrementStep,
                                 onDecrement: decrementStep)
                                 .labelsHidden()
-                            Text("\(value) segundos")
+                            Text("\(segundos) segundos")
                         }
                             .padding(.horizontal, 20)
 
                         Spacer()
 
-                        HStack(spacing: 20) {
-
-                            Button(action: {
-                                if timerRunning {
-                                    timer.upstream.connect().cancel()
-                                    timerRunning = false
-                                } else {
-                                    timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                                    timerRunning = true
-                                }
-                            }) {
-                                if timerRunning {
-                                    Image(systemName: "pause.fill")
-                                        .font(.title)
-                                } else {
-                                    Image(systemName: "play.fill")
-                                        .font(.title)
-                                }
-                            }
-
-                            Text("\(timeRemaining)")
-                                .onReceive(timer) { _ in
-
-                                if !timerRunning {
-                                    timer.upstream.connect().cancel()
-                                } else {
-                                    if timeRemaining > 0 {
-                                        timeRemaining -= 1
-                                    } else {
-                                        timeRemaining = value
-                                        nuevoKana()
-                                    }
-                                }
-                            }
-                                .font(.system(size: 36))
-                                .frame(width: 80, height: 80, alignment: .center)
-                                .foregroundColor(.accentColor)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(40)
-
-                            Button(action: {
-                                timeRemaining = value
-                                nuevoKana()
-                            }) {
-                                Image(systemName: "forward.fill")
-                                    .font(.title)
-                            }
-
-                        }
+                        Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
                     }
                         .padding(.horizontal, 20)
 
@@ -194,39 +91,17 @@ struct ContentView: View {
     }
 
     func incrementStep() {
-        value += 1
-        if value >= 60 { value = 60 }
-        self.timeRemaining = value
+        segundos += 1
+        if segundos >= 60 { segundos = 60 }
+        //self.timeRemaining = value
     }
 
     func decrementStep() {
-        value -= 1
-        if value < 2 {
-            value = 2
+        segundos -= 1
+        if segundos < 2 {
+            segundos = 2
         }
-        self.timeRemaining = value
-    }
-
-    func nuevoKana() {
-
-        config.verKanaTemporal = false
-        config.verRomajiTemporal = false
-
-        let aleatorio = tuplasKana(cantidad: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
-
-        kana = aleatorio.kana
-        romaji = aleatorio.romaji
-
-        // REF: https://nshipster.com/avspeechsynthesizer/
-        if config.audio {
-            let utterance = AVSpeechUtterance(string: kana)
-            utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
-            utterance.rate = AVSpeechUtteranceMinimumSpeechRate
-
-            let synthesizer = AVSpeechSynthesizer()
-            synthesizer.speak(utterance)
-            synthesizer.pauseSpeaking(at: .word)
-        }
+        //self.timeRemaining = value
     }
 }
 
