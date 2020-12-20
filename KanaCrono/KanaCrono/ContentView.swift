@@ -22,8 +22,12 @@ struct ContentView: View {
 
         if sizeClass == .regular {
             VStack {
+                Spacer()
+
                 Selectores()
                     .padding(.horizontal, 40)
+
+                Spacer()
 
                 VStack {
                     Kana(etiqueta: $kana)
@@ -31,32 +35,34 @@ struct ContentView: View {
                 }
                     .padding(20)
 
-                Divider()
+                Spacer()
 
-                OpcionesVisibilidad()
-                    .padding(.horizontal, 10)
+                VStack {
+                    Divider()
 
-                Divider()
+                    OpcionesVisibilidad()
+                        .padding(.horizontal, 10)
 
-                StepperSegundos(segundos: $segundos)
-                    .padding(.horizontal, 80)
+                    Divider()
 
-                Divider()
+                    StepperSegundos(segundos: $segundos)
+                        .padding(.horizontal, 80)
+
+                    Divider()
+                }
+
+                Spacer()
 
                 Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
+
+                Spacer()
             }
         } else {
             HStack {
                 VStack {
-                    Kana(etiqueta: $kana)
-                    Romaji(etiqueta: $romaji)
-                }
-                    .padding(20)
-
-                VStack {
+                    Spacer()
 
                     Selectores()
-                        .padding(.horizontal, 20)
                         .padding(.bottom, 20)
 
                     Divider()
@@ -65,19 +71,29 @@ struct ContentView: View {
 
                     Divider()
 
-                    HStack {
-                        StepperSegundos(segundos: $segundos)
-                            .padding(.horizontal, 20)
+                    Spacer()
 
+                    HStack {
                         Spacer()
 
                         Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
+
+                        Spacer()
+
+                        StepperSegundos(segundos: $segundos)
+
+                        Spacer()
                     }
-                        .padding(.horizontal, 20)
 
+                    Spacer()
                 }
-                    .padding(.horizontal, 10)
+                    .padding()
 
+                VStack {
+                    Kana(etiqueta: $kana)
+                    Romaji(etiqueta: $romaji)
+                }
+                    .padding()
             }
         }
     }
