@@ -8,6 +8,9 @@
 import SwiftUI
 import AVFoundation
 
+// REF: Global para evitar un memory-leak: https://stackoverflow.com/a/60309746/14378620
+let synthesizer = AVSpeechSynthesizer()
+
 struct Reloj: View {
 
     @EnvironmentObject var config: Config
@@ -107,7 +110,6 @@ struct Reloj: View {
             utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
             utterance.rate = AVSpeechUtteranceMinimumSpeechRate
 
-            let synthesizer = AVSpeechSynthesizer()
             synthesizer.speak(utterance)
             synthesizer.pauseSpeaking(at: .word)
         }
