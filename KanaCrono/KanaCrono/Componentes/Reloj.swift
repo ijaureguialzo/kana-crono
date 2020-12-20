@@ -43,6 +43,9 @@ struct Reloj: View {
             }
 
             Text("\(timeRemaining)")
+                .onChange(of: segundos) { _ in
+                timeRemaining = segundos
+            }
                 .onReceive(timer) { _ in
 
                 if !timerRunning {
