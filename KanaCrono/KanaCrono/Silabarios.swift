@@ -82,6 +82,14 @@ let katakana_compuestos = [
     "ピャ": "pya", "ピュ": "pyu", "ピョ": "pyo",
 ]
 
+let katakana_extra = [
+    "ファ": "fa", "フィ": "fi", "フェ": "fe", "フォ": "fo",
+    "ティ": "ti", "トゥ": "tu",
+    "ディ": "di",
+    "ヴァ": "va", "ヴィ": "vi", "ヴェ": "ve", "ヴォ": "vo",
+    "ウィ": "wi", "ウォ": "wo",
+]
+
 enum Silabario: String, CaseIterable, Identifiable {
     case hiragana
     case katakana
@@ -138,6 +146,7 @@ func tuplasKana(cantidad aleatorios: Int, _ silabario: Silabario = .hiragana, ni
                 aleatorio = katakana_basico
                     .merging(katakana_tenten, uniquingKeysWith: { (current, _) in current })
                     .merging(katakana_compuestos, uniquingKeysWith: { (current, _) in current })
+                    .merging(katakana_extra, uniquingKeysWith: { (current, _) in current })
                     .randomElement()!
             }
         }
