@@ -15,9 +15,12 @@ struct StepperSegundos: View {
 
     var body: some View {
         if sizeClass == .regular {
-            Stepper(onIncrement: incrementStep,
-                onDecrement: decrementStep) {
+            HStack {
                 Text("\(segundos) SECONDS")
+                    .padding(.trailing, 8)
+                Stepper("", onIncrement: incrementStep,
+                    onDecrement: decrementStep)
+                    .labelsHidden()
             } .scaleEffect(0.8)
         } else {
             VStack {
@@ -25,6 +28,7 @@ struct StepperSegundos: View {
                     onDecrement: decrementStep)
                     .labelsHidden()
                 Text("\(segundos) SECONDS")
+                    .padding(.top, 3)
             } .scaleEffect(0.8)
         }
     }
