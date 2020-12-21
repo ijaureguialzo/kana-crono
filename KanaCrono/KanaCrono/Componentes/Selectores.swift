@@ -13,16 +13,19 @@ struct Selectores: View {
 
     var body: some View {
         VStack {
-            Picker("Silabario", selection: $config.silabarioSeleccionado) {
+            Picker("PICKER_SYLLABARY", selection: $config.silabarioSeleccionado) {
                 ForEach(Silabario.allCases, id: \.self) { silabario in
                     Text(silabario.rawValue.capitalized)
                 }
             }
 
-            Picker("Nivel", selection: $config.nivelSeleccionado) {
-                Text("Básico").tag(Nivel.basico)
-                Text("Diacríticos").tag(Nivel.tenten)
-                Text("Dígrafos").tag(Nivel.compuestos)
+            Picker("PICKER_LEVEL", selection: $config.nivelSeleccionado) {
+                Text("LEVEL_BASIC")
+                    .tag(Nivel.basico)
+                Text("LEVEL_DIACRITICS")
+                    .tag(Nivel.tenten)
+                Text("LEVEL_DIGRAPHS")
+                    .tag(Nivel.compuestos)
             }
         }
             .pickerStyle(SegmentedPickerStyle())

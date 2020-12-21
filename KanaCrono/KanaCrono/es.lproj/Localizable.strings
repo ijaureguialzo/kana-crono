@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  KanaCrono
+
+  Created by Ion Jaureguialzo Sarasola on 22/12/20.
+  
+*/
+
+// REF: https://swiftwithmajid.com/2019/10/16/localization-in-swiftui/
+// REF: https://stackoverflow.com/a/64347096/14378620
+
+"PICKER_SYLLABARY" = "Silabario";
+"PICKER_LEVEL" = "Nivel";
+
+"LEVEL_BASIC" = "Básico";
+"LEVEL_DIACRITICS" = "Diacríticos";
+"LEVEL_DIGRAPHS" = "Dígrafos";
+
+"%lld SECONDS" = "%lld segundos";
