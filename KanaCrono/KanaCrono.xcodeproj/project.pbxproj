@@ -21,6 +21,7 @@
 		41CF4036258F618900A9D78F /* Reloj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CF4035258F618900A9D78F /* Reloj.swift */; };
 		41CF403D258F6A7600A9D78F /* StepperSegundos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CF403C258F6A7600A9D78F /* StepperSegundos.swift */; };
 		41D6E4B3259164A000A8C0C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41D6E4B5259164A000A8C0C4 /* Localizable.strings */; };
+		41D6E4C325917D3A00A8C0C4 /* Kyokasho.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 41D6E4C225917D3A00A8C0C4 /* Kyokasho.ttc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		41CF403C258F6A7600A9D78F /* StepperSegundos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperSegundos.swift; sourceTree = "<group>"; };
 		41D6E4B4259164A000A8C0C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41D6E4B8259164A400A8C0C4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		41D6E4C225917D3A00A8C0C4 /* Kyokasho.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kyokasho.ttc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				4127273A2573B38300C79819 /* Componentes */,
 				4122813325730E5E00FE373B /* Silabarios.swift */,
 				412281272573084B00FE373B /* Assets.xcassets */,
+				41D6E4C125917D0600A8C0C4 /* Fuentes */,
 				4122812C2573084B00FE373B /* Info.plist */,
 				412281292573084B00FE373B /* Preview Content */,
 				41D6E4B5259164A000A8C0C4 /* Localizable.strings */,
@@ -135,6 +138,14 @@
 				415EBF44258FCA8900FDF680 /* Info.plist */,
 			);
 			path = KanaCronoUITests;
+			sourceTree = "<group>";
+		};
+		41D6E4C125917D0600A8C0C4 /* Fuentes */ = {
+			isa = PBXGroup;
+			children = (
+				41D6E4C225917D3A00A8C0C4 /* Kyokasho.ttc */,
+			);
+			path = Fuentes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +231,7 @@
 			files = (
 				4122812B2573084B00FE373B /* Preview Assets.xcassets in Resources */,
 				41D6E4B3259164A000A8C0C4 /* Localizable.strings in Resources */,
+				41D6E4C325917D3A00A8C0C4 /* Kyokasho.ttc in Resources */,
 				412281282573084B00FE373B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
