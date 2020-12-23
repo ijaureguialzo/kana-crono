@@ -15,6 +15,7 @@ class Config: ObservableObject {
     @Published var verKana = true {
         didSet {
             verKanaTemporal = verKana
+            checkTodosOff()
         }
     }
     @Published var verKanaTemporal = false
@@ -22,9 +23,22 @@ class Config: ObservableObject {
     @Published var verRomaji = true {
         didSet {
             verRomajiTemporal = verRomaji
+            checkTodosOff()
         }
     }
     @Published var verRomajiTemporal = false
 
-    @Published var audio = false
+    @Published var audio = false {
+        didSet {
+            verKanaTemporal = verKana
+            checkTodosOff()
+        }
+    }
+
+    func checkTodosOff() {
+        if !verKana && !verRomaji && !audio {
+            verKana = true
+            verRomaji = true
+        }
+    }
 }
