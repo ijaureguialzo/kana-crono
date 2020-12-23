@@ -106,12 +106,13 @@ struct Reloj: View {
 
         // REF: https://nshipster.com/avspeechsynthesizer/
         if config.audio {
+            synthesizer.stopSpeaking(at: .immediate)
+
             let utterance = AVSpeechUtterance(string: kana)
             utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
             utterance.rate = AVSpeechUtteranceMinimumSpeechRate
 
             synthesizer.speak(utterance)
-            synthesizer.pauseSpeaking(at: .word)
         }
     }
 }
