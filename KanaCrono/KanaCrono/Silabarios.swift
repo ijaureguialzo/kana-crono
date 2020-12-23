@@ -22,7 +22,7 @@ let hiragana_basico = [
     "ら": "ra", "り": "ri", "る": "ru", "れ": "re", "ろ": "ro",
     "わ": "wa", "を": "wo",
     "ん": "n",
-]
+] // 46
 
 let hiragana_tenten = [
     "が": "ga", "ぎ": "gi", "ぐ": "gu", "げ": "ge", "ご": "go",
@@ -30,7 +30,7 @@ let hiragana_tenten = [
     "だ": "da", "ぢ": "ji", "づ": "zu", "で": "de", "ど": "do",
     "ば": "ba", "び": "bi", "ぶ": "bu", "べ": "be", "ぼ": "bo",
     "ぱ": "pa", "ぴ": "pi", "ぷ": "pu", "ぺ": "pe", "ぽ": "po",
-]
+] // 25
 
 let hiragana_compuestos = [
     "きゃ": "kya", "きゅ": "kyu", "きょ": "kyo",
@@ -44,7 +44,7 @@ let hiragana_compuestos = [
     "じゃ": "ja", "じゅ": "ju", "じょ": "jo",
     "びゃ": "bya", "びゅ": "byu", "びょ": "byo",
     "ぴゃ": "pya", "ぴゅ": "pyu", "ぴょ": "pyo",
-]
+] // 33
 
 let katakana_basico = [
     "ア": "a", "イ": "i", "ウ": "u", "エ": "e", "オ": "o",
@@ -58,7 +58,7 @@ let katakana_basico = [
     "ラ": "ra", "リ": "ri", "ル": "ru", "レ": "re", "ロ": "ro",
     "ワ": "wa", "ヲ": "wo",
     "ン": "n",
-]
+] // 46
 
 let katakana_tenten = [
     "ガ": "ga", "ギ": "gi", "グ": "gu", "ゲ": "ge", "ゴ": "go",
@@ -66,7 +66,7 @@ let katakana_tenten = [
     "ダ": "da", "ヂ": "ji", "ヅ": "zu", "デ": "de", "ド": "do",
     "バ": "ba", "ビ": "bi", "ブ": "bu", "ベ": "be", "ボ": "bo",
     "パ": "pa", "ピ": "pi", "プ": "pu", "ペ": "pe", "ポ": "po",
-]
+] // 25
 
 let katakana_compuestos = [
     "キャ": "kya", "キュ": "kyu", "キョ": "kyo",
@@ -80,7 +80,7 @@ let katakana_compuestos = [
     "ジャ": "ja", "ジュ": "ju", "ジョ": "jo",
     "ビャ": "bya", "ビュ": "byu", "ビョ": "byo",
     "ピャ": "pya", "ピュ": "pyu", "ピョ": "pyo",
-]
+] // 33
 
 let katakana_extra = [
     "ファ": "fa", "フィ": "fi", "フェ": "fe", "フォ": "fo",
@@ -88,7 +88,7 @@ let katakana_extra = [
     "ディ": "di",
     "ヴァ": "va", "ヴィ": "vi", "ヴェ": "ve", "ヴォ": "vo",
     "ウィ": "wi", "ウォ": "wo",
-]
+] // 13
 
 enum Silabario: String, CaseIterable, Identifiable {
     case hiragana
