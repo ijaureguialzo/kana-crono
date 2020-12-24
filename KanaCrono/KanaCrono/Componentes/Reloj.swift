@@ -68,6 +68,10 @@ struct Reloj: View {
                 } else {
                     if timeRemaining > 0 {
                         timeRemaining -= 1
+                        if timeRemaining == 0 {
+                            config.verKanaTemporal = true
+                            config.verRomajiTemporal = true
+                        }
                     } else {
                         timeRemaining = segundos
                         nuevoKana()
