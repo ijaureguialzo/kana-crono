@@ -15,5 +15,3 @@
 "LEVEL_BASIC" = "Básico";
 "LEVEL_DIACRITICS" = "Diacríticos";
 "LEVEL_DIGRAPHS" = "Dígrafos";
-
-"%lld SECONDS" = "%lld segundos";

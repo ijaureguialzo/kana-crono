@@ -13,6 +13,8 @@ struct StepperSegundos: View {
 
     @Binding var segundos: Int
 
+    // REF: https://levelup.gitconnected.com/localization-with-swiftui-5abbeb275d5
+    // REF: https://levelup.gitconnected.com/step-by-step-guide-for-localizing-plurals-in-ios-57f9deaade3e
     var body: some View {
         if sizeClass == .regular {
             HStack {
