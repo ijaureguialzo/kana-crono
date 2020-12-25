@@ -24,6 +24,8 @@ struct Reloj: View {
     @State private var timeRemaining = 5
     @State private var timerRunning = true
 
+    @State private var kana_anterior: String!
+
     var body: some View {
         HStack(spacing: 20) {
 
@@ -103,10 +105,12 @@ struct Reloj: View {
         config.verKanaTemporal = false
         config.verRomajiTemporal = false
 
-        let aleatorio = tuplasKana(cantidad: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
-
-        kana = aleatorio.kana
-        romaji = aleatorio.romaji
+        kana_anterior = kana
+        repeat {
+            let aleatorio = tuplasKana(cantidad: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
+            kana = aleatorio.kana
+            romaji = aleatorio.romaji
+        } while(kana == kana_anterior)
 
         // REF: https://nshipster.com/avspeechsynthesizer/
         if config.audio {
