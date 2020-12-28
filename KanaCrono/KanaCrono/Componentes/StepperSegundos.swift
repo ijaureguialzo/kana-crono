@@ -13,35 +13,23 @@ struct StepperSegundos: View {
 
     @Binding var segundos: Int
 
+    // REF: https://levelup.gitconnected.com/localization-with-swiftui-5abbeb275d5
+    // REF: https://levelup.gitconnected.com/step-by-step-guide-for-localizing-plurals-in-ios-57f9deaade3e
     var body: some View {
         if sizeClass == .regular {
             HStack {
                 Text("\(segundos) SECONDS")
                     .padding(.trailing, 8)
-                Stepper("", onIncrement: incrementStep,
-                    onDecrement: decrementStep)
+                Stepper("Segundos", value: $segundos, in: 1...60)
                     .labelsHidden()
             } .scaleEffect(0.8)
         } else {
             VStack {
-                Stepper("", onIncrement: incrementStep,
-                    onDecrement: decrementStep)
+                Stepper("Segundos", value: $segundos, in: 1...60)
                     .labelsHidden()
                 Text("\(segundos) SECONDS")
                     .padding(.top, 3)
             } .scaleEffect(0.8)
-        }
-    }
-
-    func incrementStep() {
-        segundos += 1
-        if segundos >= 60 { segundos = 60 }
-    }
-
-    func decrementStep() {
-        segundos -= 1
-        if segundos < 2 {
-            segundos = 2
         }
     }
 }

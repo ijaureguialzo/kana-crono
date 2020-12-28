@@ -24,7 +24,7 @@ struct Kana: View {
         Text(etiqueta)
             .frame(minWidth: 220)
             .opacity(transparencia)
-            .font(.custom("Hiragino Mincho ProN W3", size: 100))
+            .font(.custom("YuKyo-Medium", size: 100))
             .padding()
             .foregroundColor(Color(.label))
             .background(Color("Fondo"))
