@@ -23,8 +23,10 @@ struct Reloj: View {
             Button(action: {
                 if vm.timerRunning {
                     vm.pararReloj()
+                    vm.timerRunning = false
                 } else {
                     vm.iniciarReloj()
+                    vm.timerRunning = true
                 }
             }) {
                 if vm.timerRunning {

@@ -79,11 +79,9 @@ class ViewModel: ObservableObject {
 
     func pararReloj() {
         timer.upstream.connect().cancel()
-        timerRunning = false
     }
 
     func iniciarReloj() {
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-        timerRunning = true
     }
 }
