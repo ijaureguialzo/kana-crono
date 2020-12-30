@@ -35,6 +35,7 @@ struct Reloj: View {
                         .font(.title)
                 }
             }
+                .frame(width: 25)
 
             Text("\(vm.timeRemaining)")
                 .onChange(of: segundos) { _ in
