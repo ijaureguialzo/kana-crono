@@ -9,6 +9,14 @@ import Foundation
 
 // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-environmentobject-to-share-data-between-views
 class ViewModel: ObservableObject {
+
+    @Published var kana = "きゅ"
+    @Published var romaji = "kyu"
+
+    init() {
+        kanaAleatorio()
+    }
+
     @Published var silabarioSeleccionado = Silabario.hiragana
     @Published var nivelSeleccionado = Nivel.basico
 
@@ -49,5 +57,12 @@ class ViewModel: ObservableObject {
 
     func todosOff() -> Bool {
         return !verKana && !verRomaji && !audio
+    }
+
+    func kanaAleatorio() {
+        let aleatorio = tuplasKana(cantidad: 1, silabarioSeleccionado, nivel: nivelSeleccionado)[0]
+
+        kana = aleatorio.kana
+        romaji = aleatorio.romaji
     }
 }

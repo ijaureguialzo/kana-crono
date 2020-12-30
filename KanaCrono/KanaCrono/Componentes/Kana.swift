@@ -11,8 +11,6 @@ struct Kana: View {
 
     @EnvironmentObject var vm: ViewModel
 
-    @Binding var etiqueta: String
-
     var transparencia: Double {
         get {
             return vm.verKanaTemporal ? 1 : vm.verKana ? 1 : 0
@@ -21,7 +19,7 @@ struct Kana: View {
 
     // REF: https://www.answertopia.com/swiftui/working-with-gesture-recognizers-in-swiftui/
     var body: some View {
-        Text(etiqueta)
+        Text(vm.kana)
             .frame(minWidth: 220)
             .opacity(transparencia)
             .font(.custom("YuKyo-Medium", size: 100))
@@ -42,9 +40,8 @@ struct Kana_Previews: PreviewProvider {
 }
 
 struct Kana_CustomPreview: View {
-    @State private var etiqueta = "きゅ"
 
     var body: some View {
-        Kana(etiqueta: $etiqueta).environmentObject(ViewModel())
+        Kana().environmentObject(ViewModel())
     }
 }

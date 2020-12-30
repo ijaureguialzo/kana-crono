@@ -16,8 +16,6 @@ struct Reloj: View {
     @EnvironmentObject var vm: ViewModel
 
     @Binding var segundos: Int
-    @Binding var kana: String
-    @Binding var romaji: String
 
     // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-a-timer-with-swiftui
     @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -94,10 +92,7 @@ struct Reloj: View {
                     .font(.title)
             }
 
-        }.onAppear(perform: {
-            timeRemaining = segundos
-            nuevoKana()
-        })
+        }
     }
 
     func nuevoKana() {
@@ -105,18 +100,16 @@ struct Reloj: View {
         vm.verKanaTemporal = false
         vm.verRomajiTemporal = false
 
-        kana_anterior = kana
+        kana_anterior = vm.kana
         repeat {
-            let aleatorio = tuplasKana(cantidad: 1, vm.silabarioSeleccionado, nivel: vm.nivelSeleccionado)[0]
-            kana = aleatorio.kana
-            romaji = aleatorio.romaji
-        } while(kana == kana_anterior)
+            vm.kanaAleatorio()
+        } while(vm.kana == kana_anterior)
 
         // REF: https://nshipster.com/avspeechsynthesizer/
         if vm.audio {
             synthesizer.stopSpeaking(at: .immediate)
 
-            let utterance = AVSpeechUtterance(string: kana)
+            let utterance = AVSpeechUtterance(string: vm.kana)
             utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
             utterance.rate = AVSpeechUtteranceMinimumSpeechRate
 
@@ -133,12 +126,10 @@ struct Reloj_Previews: PreviewProvider {
 
 struct Reloj_CustomPreview: View {
 
-    @State private var kana = "きゅ"
-    @State private var romaji = "kyu"
     @State private var segundos = 5
 
     var body: some View {
-        Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
+        Reloj(segundos: $segundos)
             .environmentObject(ViewModel())
     }
 }

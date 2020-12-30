@@ -11,8 +11,6 @@ struct Romaji: View {
 
     @EnvironmentObject var vm: ViewModel
 
-    @Binding var etiqueta: String
-
     var transparencia: Double {
         get {
             return vm.verRomajiTemporal ? 1 : vm.verRomaji ? 1 : 0
@@ -20,7 +18,7 @@ struct Romaji: View {
     }
 
     var body: some View {
-        Text(etiqueta)
+        Text(vm.romaji)
             .opacity(transparencia)
             .frame(minWidth: 220)
             .font(.title)
@@ -41,9 +39,8 @@ struct Romaji_Previews: PreviewProvider {
 }
 
 struct Romaji_CustomPreview: View {
-    @State private var etiqueta = "kyu"
 
     var body: some View {
-        Romaji(etiqueta: $etiqueta).environmentObject(ViewModel())
+        Romaji().environmentObject(ViewModel())
     }
 }

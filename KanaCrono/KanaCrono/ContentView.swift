@@ -14,8 +14,6 @@ struct ContentView: View {
 
     @EnvironmentObject var vm: ViewModel
 
-    @State private var kana = "きゅ"
-    @State private var romaji = "kyu"
     @State private var segundos = 5
 
     var body: some View {
@@ -30,8 +28,8 @@ struct ContentView: View {
                 Spacer()
 
                 VStack {
-                    Kana(etiqueta: $kana)
-                    Romaji(etiqueta: $romaji)
+                    Kana()
+                    Romaji()
                 }
                     .padding(20)
 
@@ -53,7 +51,7 @@ struct ContentView: View {
 
                 Spacer()
 
-                Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
+                Reloj(segundos: $segundos)
 
                 Spacer()
             }
@@ -76,7 +74,7 @@ struct ContentView: View {
                     HStack {
                         Spacer()
 
-                        Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
+                        Reloj(segundos: $segundos)
 
                         Spacer()
 
@@ -90,8 +88,8 @@ struct ContentView: View {
                     .padding()
 
                 VStack {
-                    Kana(etiqueta: $kana)
-                    Romaji(etiqueta: $romaji)
+                    Kana()
+                    Romaji()
                 }
                     .padding()
             }
