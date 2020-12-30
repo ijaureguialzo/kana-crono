@@ -22,11 +22,9 @@ struct Reloj: View {
 
             Button(action: {
                 if vm.timerRunning {
-                    vm.timer.upstream.connect().cancel()
-                    vm.timerRunning = false
+                    vm.pararReloj()
                 } else {
-                    vm.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                    vm.timerRunning = true
+                    vm.iniciarReloj()
                 }
             }) {
                 if vm.timerRunning {
@@ -40,27 +38,30 @@ struct Reloj: View {
 
             Text("\(vm.timeRemaining)")
                 .onChange(of: segundos) { _ in
-                vm.timer.upstream.connect().cancel()
+                vm.pararReloj()
                 vm.timeRemaining = segundos
-                vm.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                vm.timerRunning = true
+                vm.iniciarReloj()
             }
                 .gesture(TapGesture().onEnded { _ in
                     vm.verKanaTemporal = true
                     vm.verRomajiTemporal = true
                 })
                 .onChange(of: vm.silabarioSeleccionado) { _ in
+                vm.pararReloj()
                 vm.timeRemaining = segundos
+                vm.iniciarReloj()
                 nuevoKana()
             }
                 .onChange(of: vm.nivelSeleccionado) { _ in
+                vm.pararReloj()
                 vm.timeRemaining = segundos
+                vm.iniciarReloj()
                 nuevoKana()
             }
                 .onReceive(vm.timer) { _ in
 
                 if !vm.timerRunning {
-                    vm.timer.upstream.connect().cancel()
+                    vm.pararReloj()
                 } else {
                     if vm.timeRemaining > 0 {
                         vm.timeRemaining -= 1
@@ -81,7 +82,9 @@ struct Reloj: View {
                 .cornerRadius(40)
 
             Button(action: {
+                vm.pararReloj()
                 vm.timeRemaining = segundos
+                vm.iniciarReloj()
                 nuevoKana()
             }) {
                 Image(systemName: "forward.fill")

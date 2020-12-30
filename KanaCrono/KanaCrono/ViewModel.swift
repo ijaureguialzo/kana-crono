@@ -76,4 +76,14 @@ class ViewModel: ObservableObject {
     @Published var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @Published var timeRemaining = 5
     @Published var timerRunning = true
+
+    func pararReloj() {
+        timer.upstream.connect().cancel()
+        timerRunning = false
+    }
+
+    func iniciarReloj() {
+        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+        timerRunning = true
+    }
 }
