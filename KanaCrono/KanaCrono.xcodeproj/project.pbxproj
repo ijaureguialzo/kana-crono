@@ -12,7 +12,7 @@
 		412281282573084B00FE373B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 412281272573084B00FE373B /* Assets.xcassets */; };
 		4122812B2573084B00FE373B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4122812A2573084B00FE373B /* Preview Assets.xcassets */; };
 		4122813425730E5E00FE373B /* Silabarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4122813325730E5E00FE373B /* Silabarios.swift */; };
-		412727312573B0BF00C79819 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727302573B0BF00C79819 /* Config.swift */; };
+		412727312573B0BF00C79819 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727302573B0BF00C79819 /* ViewModel.swift */; };
 		412727352573B0EB00C79819 /* Selectores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727342573B0EB00C79819 /* Selectores.swift */; };
 		412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727372573B26F00C79819 /* OpcionesVisibilidad.swift */; };
 		4127273D2574369000C79819 /* Kana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4127273C2574369000C79819 /* Kana.swift */; };
@@ -43,7 +43,7 @@
 		4122812A2573084B00FE373B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4122812C2573084B00FE373B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4122813325730E5E00FE373B /* Silabarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Silabarios.swift; sourceTree = "<group>"; };
-		412727302573B0BF00C79819 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		412727302573B0BF00C79819 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		412727342573B0EB00C79819 /* Selectores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectores.swift; sourceTree = "<group>"; };
 		412727372573B26F00C79819 /* OpcionesVisibilidad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpcionesVisibilidad.swift; sourceTree = "<group>"; };
 		4127273C2574369000C79819 /* Kana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kana.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				412281232573084A00FE373B /* KanaCronoApp.swift */,
-				412727302573B0BF00C79819 /* Config.swift */,
+				412727302573B0BF00C79819 /* ViewModel.swift */,
 				412281252573084A00FE373B /* ContentView.swift */,
 				4127273A2573B38300C79819 /* Componentes */,
 				4122813325730E5E00FE373B /* Silabarios.swift */,
@@ -197,7 +197,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1230;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					4122811F2573084A00FE373B = {
 						CreatedOnToolsVersion = 12.2;
@@ -257,7 +257,7 @@
 			files = (
 				4122813425730E5E00FE373B /* Silabarios.swift in Sources */,
 				41B0D361258E3615001B9C36 /* Romaji.swift in Sources */,
-				412727312573B0BF00C79819 /* Config.swift in Sources */,
+				412727312573B0BF00C79819 /* ViewModel.swift in Sources */,
 				412727352573B0EB00C79819 /* Selectores.swift in Sources */,
 				412281262573084A00FE373B /* ContentView.swift in Sources */,
 				4127273D2574369000C79819 /* Kana.swift in Sources */,
@@ -312,6 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -373,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

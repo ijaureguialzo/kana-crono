@@ -9,19 +9,17 @@ import SwiftUI
 
 struct Kana: View {
 
-    @EnvironmentObject var config: Config
-
-    @Binding var etiqueta: String
+    @EnvironmentObject var vm: ViewModel
 
     var transparencia: Double {
         get {
-            return config.verKanaTemporal ? 1 : config.verKana ? 1 : 0
+            return vm.verKanaTemporal ? 1 : vm.verKana ? 1 : 0
         }
     }
 
     // REF: https://www.answertopia.com/swiftui/working-with-gesture-recognizers-in-swiftui/
     var body: some View {
-        Text(etiqueta)
+        Text(vm.kana)
             .frame(minWidth: 220)
             .opacity(transparencia)
             .font(.custom("YuKyo-Medium", size: 100))
@@ -30,7 +28,7 @@ struct Kana: View {
             .background(Color("Fondo"))
             .cornerRadius(10.0)
             .gesture(TapGesture().onEnded { _ in
-                config.verKanaTemporal = true
+                vm.verKanaTemporal = true
             })
     }
 }
@@ -42,9 +40,8 @@ struct Kana_Previews: PreviewProvider {
 }
 
 struct Kana_CustomPreview: View {
-    @State private var etiqueta = "きゅ"
 
     var body: some View {
-        Kana(etiqueta: $etiqueta).environmentObject(Config())
+        Kana().environmentObject(ViewModel())
     }
 }

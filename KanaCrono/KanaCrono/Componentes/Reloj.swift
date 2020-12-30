@@ -13,32 +13,21 @@ let synthesizer = AVSpeechSynthesizer()
 
 struct Reloj: View {
 
-    @EnvironmentObject var config: Config
+    @EnvironmentObject var vm: ViewModel
 
     @Binding var segundos: Int
-    @Binding var kana: String
-    @Binding var romaji: String
-
-    // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-a-timer-with-swiftui
-    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timeRemaining = 5
-    @State private var timerRunning = true
-
-    @State private var kana_anterior: String!
 
     var body: some View {
         HStack(spacing: 20) {
 
             Button(action: {
-                if timerRunning {
-                    timer.upstream.connect().cancel()
-                    timerRunning = false
+                if vm.timerRunning {
+                    vm.pararReloj()
                 } else {
-                    timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                    timerRunning = true
+                    vm.iniciarReloj()
                 }
             }) {
-                if timerRunning {
+                if vm.timerRunning {
                     Image(systemName: "pause.fill")
                         .font(.title)
                 } else {
@@ -46,36 +35,43 @@ struct Reloj: View {
                         .font(.title)
                 }
             }
+                .frame(width: 25)
 
-            Text("\(timeRemaining)")
+            Text("\(vm.timeRemaining)")
                 .onChange(of: segundos) { _ in
-                timeRemaining = segundos
+                vm.pararReloj()
+                vm.timeRemaining = segundos
+                vm.iniciarReloj()
             }
                 .gesture(TapGesture().onEnded { _ in
-                    config.verKanaTemporal = true
-                    config.verRomajiTemporal = true
+                    vm.verKanaTemporal = true
+                    vm.verRomajiTemporal = true
                 })
-                .onChange(of: config.silabarioSeleccionado) { _ in
-                timeRemaining = segundos
+                .onChange(of: vm.silabarioSeleccionado) { _ in
+                vm.pararReloj()
+                vm.timeRemaining = segundos
+                vm.iniciarReloj()
                 nuevoKana()
             }
-                .onChange(of: config.nivelSeleccionado) { _ in
-                timeRemaining = segundos
+                .onChange(of: vm.nivelSeleccionado) { _ in
+                vm.pararReloj()
+                vm.timeRemaining = segundos
+                vm.iniciarReloj()
                 nuevoKana()
             }
-                .onReceive(timer) { _ in
+                .onReceive(vm.timer) { _ in
 
-                if !timerRunning {
-                    timer.upstream.connect().cancel()
+                if !vm.timerRunning {
+                    vm.pararReloj()
                 } else {
-                    if timeRemaining > 0 {
-                        timeRemaining -= 1
-                        if timeRemaining == 0 {
-                            config.verKanaTemporal = true
-                            config.verRomajiTemporal = true
+                    if vm.timeRemaining > 0 {
+                        vm.timeRemaining -= 1
+                        if vm.timeRemaining == 0 {
+                            vm.verKanaTemporal = true
+                            vm.verRomajiTemporal = true
                         }
                     } else {
-                        timeRemaining = segundos
+                        vm.timeRemaining = segundos
                         nuevoKana()
                     }
                 }
@@ -87,36 +83,30 @@ struct Reloj: View {
                 .cornerRadius(40)
 
             Button(action: {
-                timeRemaining = segundos
+                vm.pararReloj()
+                vm.timeRemaining = segundos
+                vm.iniciarReloj()
                 nuevoKana()
             }) {
                 Image(systemName: "forward.fill")
                     .font(.title)
             }
 
-        }.onAppear(perform: {
-            timeRemaining = segundos
-            nuevoKana()
-        })
+        }
     }
 
     func nuevoKana() {
 
-        config.verKanaTemporal = false
-        config.verRomajiTemporal = false
+        vm.verKanaTemporal = false
+        vm.verRomajiTemporal = false
 
-        kana_anterior = kana
-        repeat {
-            let aleatorio = tuplasKana(cantidad: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
-            kana = aleatorio.kana
-            romaji = aleatorio.romaji
-        } while(kana == kana_anterior)
+        vm.kanaAleatorio()
 
         // REF: https://nshipster.com/avspeechsynthesizer/
-        if config.audio {
+        if vm.audio {
             synthesizer.stopSpeaking(at: .immediate)
 
-            let utterance = AVSpeechUtterance(string: kana)
+            let utterance = AVSpeechUtterance(string: vm.kana)
             utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
             utterance.rate = AVSpeechUtteranceMinimumSpeechRate
 
@@ -133,12 +123,10 @@ struct Reloj_Previews: PreviewProvider {
 
 struct Reloj_CustomPreview: View {
 
-    @State private var kana = "きゅ"
-    @State private var romaji = "kyu"
     @State private var segundos = 5
 
     var body: some View {
-        Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
-            .environmentObject(Config())
+        Reloj(segundos: $segundos)
+            .environmentObject(ViewModel())
     }
 }

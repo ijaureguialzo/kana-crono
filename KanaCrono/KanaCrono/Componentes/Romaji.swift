@@ -9,18 +9,16 @@ import SwiftUI
 
 struct Romaji: View {
 
-    @EnvironmentObject var config: Config
-
-    @Binding var etiqueta: String
+    @EnvironmentObject var vm: ViewModel
 
     var transparencia: Double {
         get {
-            return config.verRomajiTemporal ? 1 : config.verRomaji ? 1 : 0
+            return vm.verRomajiTemporal ? 1 : vm.verRomaji ? 1 : 0
         }
     }
 
     var body: some View {
-        Text(etiqueta)
+        Text(vm.romaji)
             .opacity(transparencia)
             .frame(minWidth: 220)
             .font(.title)
@@ -29,7 +27,7 @@ struct Romaji: View {
             .background(Color("AccentColor"))
             .cornerRadius(10.0)
             .gesture(TapGesture().onEnded { _ in
-                config.verRomajiTemporal = true
+                vm.verRomajiTemporal = true
             })
     }
 }
@@ -41,9 +39,8 @@ struct Romaji_Previews: PreviewProvider {
 }
 
 struct Romaji_CustomPreview: View {
-    @State private var etiqueta = "kyu"
 
     var body: some View {
-        Romaji(etiqueta: $etiqueta).environmentObject(Config())
+        Romaji().environmentObject(ViewModel())
     }
 }
