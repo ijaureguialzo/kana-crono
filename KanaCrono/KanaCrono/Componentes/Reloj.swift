@@ -22,8 +22,6 @@ struct Reloj: View {
     @State private var timeRemaining = 5
     @State private var timerRunning = true
 
-    @State private var kana_anterior: String!
-
     var body: some View {
         HStack(spacing: 20) {
 
@@ -100,10 +98,7 @@ struct Reloj: View {
         vm.verKanaTemporal = false
         vm.verRomajiTemporal = false
 
-        kana_anterior = vm.kana
-        repeat {
-            vm.kanaAleatorio()
-        } while(vm.kana == kana_anterior)
+        vm.kanaAleatorio()
 
         // REF: https://nshipster.com/avspeechsynthesizer/
         if vm.audio {

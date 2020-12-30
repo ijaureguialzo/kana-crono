@@ -59,10 +59,16 @@ class ViewModel: ObservableObject {
         return !verKana && !verRomaji && !audio
     }
 
-    func kanaAleatorio() {
-        let aleatorio = tuplasKana(cantidad: 1, silabarioSeleccionado, nivel: nivelSeleccionado)[0]
+    private var kana_anterior: String!
 
-        kana = aleatorio.kana
-        romaji = aleatorio.romaji
+    func kanaAleatorio() {
+
+        kana_anterior = kana
+        repeat {
+            let aleatorio = tuplasKana(cantidad: 1, silabarioSeleccionado, nivel: nivelSeleccionado)[0]
+
+            kana = aleatorio.kana
+            romaji = aleatorio.romaji
+        } while(kana == kana_anterior)
     }
 }
