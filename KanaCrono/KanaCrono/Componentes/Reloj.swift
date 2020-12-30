@@ -17,24 +17,19 @@ struct Reloj: View {
 
     @Binding var segundos: Int
 
-    // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-a-timer-with-swiftui
-    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State private var timeRemaining = 5
-    @State private var timerRunning = true
-
     var body: some View {
         HStack(spacing: 20) {
 
             Button(action: {
-                if timerRunning {
-                    timer.upstream.connect().cancel()
-                    timerRunning = false
+                if vm.timerRunning {
+                    vm.timer.upstream.connect().cancel()
+                    vm.timerRunning = false
                 } else {
-                    timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                    timerRunning = true
+                    vm.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                    vm.timerRunning = true
                 }
             }) {
-                if timerRunning {
+                if vm.timerRunning {
                     Image(systemName: "pause.fill")
                         .font(.title)
                 } else {
@@ -43,35 +38,38 @@ struct Reloj: View {
                 }
             }
 
-            Text("\(timeRemaining)")
+            Text("\(vm.timeRemaining)")
                 .onChange(of: segundos) { _ in
-                timeRemaining = segundos
+                vm.timer.upstream.connect().cancel()
+                vm.timeRemaining = segundos
+                vm.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                vm.timerRunning = true
             }
                 .gesture(TapGesture().onEnded { _ in
                     vm.verKanaTemporal = true
                     vm.verRomajiTemporal = true
                 })
                 .onChange(of: vm.silabarioSeleccionado) { _ in
-                timeRemaining = segundos
+                vm.timeRemaining = segundos
                 nuevoKana()
             }
                 .onChange(of: vm.nivelSeleccionado) { _ in
-                timeRemaining = segundos
+                vm.timeRemaining = segundos
                 nuevoKana()
             }
-                .onReceive(timer) { _ in
+                .onReceive(vm.timer) { _ in
 
-                if !timerRunning {
-                    timer.upstream.connect().cancel()
+                if !vm.timerRunning {
+                    vm.timer.upstream.connect().cancel()
                 } else {
-                    if timeRemaining > 0 {
-                        timeRemaining -= 1
-                        if timeRemaining == 0 {
+                    if vm.timeRemaining > 0 {
+                        vm.timeRemaining -= 1
+                        if vm.timeRemaining == 0 {
                             vm.verKanaTemporal = true
                             vm.verRomajiTemporal = true
                         }
                     } else {
-                        timeRemaining = segundos
+                        vm.timeRemaining = segundos
                         nuevoKana()
                     }
                 }
@@ -83,7 +81,7 @@ struct Reloj: View {
                 .cornerRadius(40)
 
             Button(action: {
-                timeRemaining = segundos
+                vm.timeRemaining = segundos
                 nuevoKana()
             }) {
                 Image(systemName: "forward.fill")
