@@ -9,19 +9,19 @@ import SwiftUI
 
 struct OpcionesVisibilidad: View {
 
-    @EnvironmentObject var config: Config
+    @EnvironmentObject var vm: ViewModel
 
     var body: some View {
         HStack {
-            Toggle(isOn: $config.verKana) {
+            Toggle(isOn: $vm.verKana) {
                 Text("Kana")
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
-            Toggle(isOn: $config.verRomaji) {
+            Toggle(isOn: $vm.verRomaji) {
                 Text("Romaji")
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
-            Toggle(isOn: $config.audio) {
+            Toggle(isOn: $vm.audio) {
                 Text("Audio")
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
@@ -38,6 +38,6 @@ struct OpcionesVisibilidad_Previews: PreviewProvider {
 
 struct OpcionesVisibilidad_CustomPreview: View {
     var body: some View {
-        OpcionesVisibilidad().environmentObject(Config())
+        OpcionesVisibilidad().environmentObject(ViewModel())
     }
 }

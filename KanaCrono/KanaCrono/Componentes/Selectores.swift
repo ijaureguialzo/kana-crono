@@ -9,17 +9,17 @@ import SwiftUI
 
 struct Selectores: View {
 
-    @EnvironmentObject var config: Config
+    @EnvironmentObject var vm: ViewModel
 
     var body: some View {
         VStack {
-            Picker("PICKER_SYLLABARY", selection: $config.silabarioSeleccionado) {
+            Picker("PICKER_SYLLABARY", selection: $vm.silabarioSeleccionado) {
                 ForEach(Silabario.allCases, id: \.self) { silabario in
                     Text(silabario.rawValue.capitalized)
                 }
             }
 
-            Picker("PICKER_LEVEL", selection: $config.nivelSeleccionado) {
+            Picker("PICKER_LEVEL", selection: $vm.nivelSeleccionado) {
                 Text("LEVEL_BASIC")
                     .tag(Nivel.basico)
                 Text("LEVEL_DIACRITICS")
@@ -40,6 +40,6 @@ struct Selectores_Previews: PreviewProvider {
 
 struct Selectores_CustomPreview: View {
     var body: some View {
-        Selectores().environmentObject(Config())
+        Selectores().environmentObject(ViewModel())
     }
 }

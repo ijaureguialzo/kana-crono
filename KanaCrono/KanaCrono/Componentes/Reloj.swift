@@ -13,7 +13,7 @@ let synthesizer = AVSpeechSynthesizer()
 
 struct Reloj: View {
 
-    @EnvironmentObject var config: Config
+    @EnvironmentObject var vm: ViewModel
 
     @Binding var segundos: Int
     @Binding var kana: String
@@ -52,14 +52,14 @@ struct Reloj: View {
                 timeRemaining = segundos
             }
                 .gesture(TapGesture().onEnded { _ in
-                    config.verKanaTemporal = true
-                    config.verRomajiTemporal = true
+                    vm.verKanaTemporal = true
+                    vm.verRomajiTemporal = true
                 })
-                .onChange(of: config.silabarioSeleccionado) { _ in
+                .onChange(of: vm.silabarioSeleccionado) { _ in
                 timeRemaining = segundos
                 nuevoKana()
             }
-                .onChange(of: config.nivelSeleccionado) { _ in
+                .onChange(of: vm.nivelSeleccionado) { _ in
                 timeRemaining = segundos
                 nuevoKana()
             }
@@ -71,8 +71,8 @@ struct Reloj: View {
                     if timeRemaining > 0 {
                         timeRemaining -= 1
                         if timeRemaining == 0 {
-                            config.verKanaTemporal = true
-                            config.verRomajiTemporal = true
+                            vm.verKanaTemporal = true
+                            vm.verRomajiTemporal = true
                         }
                     } else {
                         timeRemaining = segundos
@@ -102,18 +102,18 @@ struct Reloj: View {
 
     func nuevoKana() {
 
-        config.verKanaTemporal = false
-        config.verRomajiTemporal = false
+        vm.verKanaTemporal = false
+        vm.verRomajiTemporal = false
 
         kana_anterior = kana
         repeat {
-            let aleatorio = tuplasKana(cantidad: 1, config.silabarioSeleccionado, nivel: config.nivelSeleccionado)[0]
+            let aleatorio = tuplasKana(cantidad: 1, vm.silabarioSeleccionado, nivel: vm.nivelSeleccionado)[0]
             kana = aleatorio.kana
             romaji = aleatorio.romaji
         } while(kana == kana_anterior)
 
         // REF: https://nshipster.com/avspeechsynthesizer/
-        if config.audio {
+        if vm.audio {
             synthesizer.stopSpeaking(at: .immediate)
 
             let utterance = AVSpeechUtterance(string: kana)
@@ -139,6 +139,6 @@ struct Reloj_CustomPreview: View {
 
     var body: some View {
         Reloj(segundos: $segundos, kana: $kana, romaji: $romaji)
-            .environmentObject(Config())
+            .environmentObject(ViewModel())
     }
 }
