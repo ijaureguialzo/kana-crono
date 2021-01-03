@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun nuevoKana() {
-        etiquetaKana.text = kana
-        etiquetaRomaji.text = romaji
+        val aleatorio = tuplaKana()
+        etiquetaKana.text = aleatorio.first
+        etiquetaRomaji.text = aleatorio.second
     }
 }
