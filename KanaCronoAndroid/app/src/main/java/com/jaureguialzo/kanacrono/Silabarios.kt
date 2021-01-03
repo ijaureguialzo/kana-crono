@@ -1,5 +1,7 @@
 package com.jaureguialzo.kanacrono
 
+import java.util.*
+
 val hiragana_basico = mapOf(
     "あ" to "a", "い" to "i", "う" to "u", "え" to "e", "お" to "o",
     "か" to "ka", "き" to "ki", "く" to "ku", "け" to "ke", "こ" to "ko",
@@ -91,5 +93,31 @@ enum class Nivel {
 fun tuplaKana(
     silabario: Silabario = Silabario.hiragana, nivel: Nivel = Nivel.basico
 ): Pair<String, String> {
-    return Pair("きゅ", "kyu")
+
+    val random = Random()
+
+    val union = when (silabario) {
+        Silabario.hiragana -> when (nivel) {
+            Nivel.basico -> hiragana_basico.asSequence()
+            Nivel.tenten -> (
+                    hiragana_basico.asSequence() + hiragana_tenten.asSequence()
+                    ).distinct()
+            Nivel.compuestos -> (
+                    hiragana_basico.asSequence() + hiragana_tenten.asSequence() + hiragana_compuestos.asSequence()
+                    ).distinct()
+        }
+        Silabario.katakana -> when (nivel) {
+            Nivel.basico -> katakana_basico.asSequence()
+            Nivel.tenten -> (
+                    katakana_basico.asSequence() + katakana_tenten.asSequence()
+                    ).distinct()
+            Nivel.compuestos -> (
+                    katakana_basico.asSequence() + katakana_tenten.asSequence() + katakana_compuestos.asSequence() + katakana_extra.asSequence()
+                    ).distinct()
+        }
+    }
+
+    val aleatorio = union.asSequence().elementAt(random.nextInt(union.count()))
+
+    return Pair(aleatorio.key, aleatorio.value)
 }
