@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var etiquetaKana: TextView
     private lateinit var etiquetaRomaji: TextView
+    private lateinit var silabario: RadioGroup
+    private lateinit var nivel: RadioGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         etiquetaKana = findViewById(R.id.etiquetaKana)
         etiquetaRomaji = findViewById(R.id.etiquetaRomaji)
+        silabario = findViewById(R.id.silabarioRadioGroup)
+        nivel = findViewById(R.id.nivelRadioGroup)
 
         nuevoKana()
+
+        silabario.setOnCheckedChangeListener { _, _ -> nuevoKana() }
+        nivel.setOnCheckedChangeListener { _, _ -> nuevoKana() }
     }
 
     fun botonSiguiente(view: View) {
@@ -35,10 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun silabarioSeleccionado(): Silabario {
-
-        val silabario = findViewById<RadioGroup>(R.id.silabarioRadioGroup).checkedRadioButtonId
-
-        return when (silabario) {
+        return when (silabario.checkedRadioButtonId) {
             R.id.radioButtonHiragana -> Silabario.hiragana
             R.id.radioButtonKatakana -> Silabario.katakana
             else -> Silabario.hiragana
@@ -46,10 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun nivelSeleccionado(): Nivel {
-
-        val nivel = findViewById<RadioGroup>(R.id.nivelRadioGroup).checkedRadioButtonId
-
-        return when (nivel) {
+        return when (nivel.checkedRadioButtonId) {
             R.id.radioButtonBasico -> Nivel.basico
             R.id.radioButtonDiacriticos -> Nivel.tenten
             R.id.radioButtonDigrafos -> Nivel.compuestos
