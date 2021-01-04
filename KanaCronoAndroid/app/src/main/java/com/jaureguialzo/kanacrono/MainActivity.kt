@@ -1,12 +1,13 @@
 package com.jaureguialzo.kanacrono
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     var kana = "きゅ"
     var romaji = "kyu"
@@ -18,12 +19,31 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nivel: RadioGroup
     private lateinit var verKana: Switch
     private lateinit var verRomaji: Switch
+    private lateinit var reproducirAudio: Switch
     private lateinit var pickerSegundos: NumberPicker
 
     private lateinit var timer: Timer
     private var segundos = 5
     private var timeRemaining = 5
     private var timerRunning = true
+
+    // REF: https://gist.github.com/leesc22/5f13cc049e84610fe147f21ab7e4b814
+    private lateinit var tts: TextToSpeech
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts.setLanguage(Locale.JAPANESE)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Toast.makeText(applicationContext, "Audio no disponible", Toast.LENGTH_SHORT).show()
+            } else {
+                reproducirAudio.isEnabled = true
+                tts.setSpeechRate(0.5F)
+            }
+        } else {
+            Toast.makeText(applicationContext, "Audio no disponible", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +57,9 @@ class MainActivity : AppCompatActivity() {
         verKana = findViewById(R.id.switchKana)
         verRomaji = findViewById(R.id.switchRomaji)
         pickerSegundos = findViewById(R.id.pickerSegundos)
+        reproducirAudio = findViewById(R.id.reproducirAudio)
+
+        tts = TextToSpeech(this, this)
 
         nuevoKana()
 
@@ -76,6 +99,12 @@ class MainActivity : AppCompatActivity() {
 
         timeRemaining = segundos
         iniciarReloj()
+    }
+
+    override fun onDestroy() {
+        tts.stop()
+        tts.shutdown()
+        super.onDestroy()
     }
 
     fun iniciarReloj() {
@@ -140,6 +169,10 @@ class MainActivity : AppCompatActivity() {
         val aleatorio = tuplaKana(silabarioSeleccionado(), nivelSeleccionado())
         etiquetaKana.text = aleatorio.first
         etiquetaRomaji.text = aleatorio.second
+
+        if (reproducirAudio.isChecked) {
+            tts.speak(aleatorio.first, TextToSpeech.QUEUE_FLUSH, null, "")
+        }
     }
 
     fun silabarioSeleccionado(): Silabario {

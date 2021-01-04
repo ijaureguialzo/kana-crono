@@ -94,6 +94,15 @@
             android:layout_weight="1"
             android:checked="true"
             android:text="Romaji" />
+
+        <Switch
+            android:id="@+id/reproducirAudio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:enabled="false"
+            android:text="Audio" />
     </LinearLayout>
 
     <LinearLayout
