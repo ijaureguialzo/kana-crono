@@ -69,17 +69,36 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         nivel.setOnCheckedChangeListener { _, _ ->
             siguienteKana()
         }
+
         verKana.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked)
                 etiquetaKana.alpha = 1.0F
-            else
+            else {
                 etiquetaKana.alpha = 0.0F
+
+                if (todosOff()) {
+                    verRomaji.isChecked = true
+                    reproducirAudio.isChecked = true
+                }
+            }
         }
         verRomaji.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked)
                 etiquetaRomaji.alpha = 1.0F
-            else
+            else {
                 etiquetaRomaji.alpha = 0.0F
+
+                if (todosOff()) {
+                    verKana.isChecked = true
+                    reproducirAudio.isChecked = true
+                }
+            }
+        }
+        reproducirAudio.setOnCheckedChangeListener { _, isChecked ->
+            if (!isChecked && todosOff()) {
+                verKana.isChecked = true
+                verRomaji.isChecked = true
+            }
         }
 
         val tiempos = arrayOf("1", "2", "3", "5", "10", "15", "20", "30", "45", "60")
@@ -99,6 +118,10 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         timeRemaining = segundos
         iniciarReloj()
+    }
+
+    private fun todosOff(): Boolean {
+        return !verKana.isChecked && !verRomaji.isChecked && !reproducirAudio.isChecked
     }
 
     override fun onDestroy() {
