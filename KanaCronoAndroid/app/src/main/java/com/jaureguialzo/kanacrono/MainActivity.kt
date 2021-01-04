@@ -41,8 +41,12 @@ class MainActivity : AppCompatActivity() {
 
         nuevoKana()
 
-        silabario.setOnCheckedChangeListener { _, _ -> nuevoKana() }
-        nivel.setOnCheckedChangeListener { _, _ -> nuevoKana() }
+        silabario.setOnCheckedChangeListener { _, _ ->
+            siguienteKana()
+        }
+        nivel.setOnCheckedChangeListener { _, _ ->
+            siguienteKana()
+        }
         verKana.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked)
                 etiquetaKana.alpha = 1.0F
@@ -76,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                                 timeRemaining -= 1
                             } else {
                                 timeRemaining = segundos
+                                nuevoKana()
                             }
                             etiquetaSegundos.text = "${timeRemaining}"
                         }
@@ -90,10 +95,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun botonSiguiente(view: View) {
+        siguienteKana()
+    }
+
+    private fun siguienteKana() {
+        nuevoKana()
         timeRemaining = segundos
         etiquetaSegundos.text = "${timeRemaining}"
-        nuevoKana()
-
         if (timerRunning) {
             pararReloj()
             iniciarReloj()
