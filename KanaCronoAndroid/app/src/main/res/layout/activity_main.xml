@@ -97,12 +97,36 @@
             android:text="Romaji" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/botonSiguiente"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:onClick="botonSiguiente"
-        app:srcCompat="@android:drawable/ic_media_ff" />
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/botonPausa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="botonPausa"
+            app:srcCompat="@android:drawable/ic_media_pause" />
+
+        <TextView
+            android:id="@+id/etiquetaSegundos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minWidth="48dp"
+            android:text="5"
+            android:textAlignment="center"
+            android:textSize="36sp" />
+
+        <ImageButton
+            android:id="@+id/botonSiguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="botonSiguiente"
+            app:srcCompat="@android:drawable/ic_media_ff" />
+    </LinearLayout>
 
 </LinearLayout>
