@@ -2,10 +2,7 @@ package com.jaureguialzo.kanacrono
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageButton
-import android.widget.RadioGroup
-import android.widget.Switch
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -21,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nivel: RadioGroup
     private lateinit var verKana: Switch
     private lateinit var verRomaji: Switch
+    private lateinit var pickerSegundos: NumberPicker
 
     private lateinit var timer: Timer
     private var segundos = 5
@@ -38,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         nivel = findViewById(R.id.nivelRadioGroup)
         verKana = findViewById(R.id.switchKana)
         verRomaji = findViewById(R.id.switchRomaji)
+        pickerSegundos = findViewById(R.id.pickerSegundos)
 
         nuevoKana()
 
@@ -58,6 +57,21 @@ class MainActivity : AppCompatActivity() {
                 etiquetaRomaji.alpha = 1.0F
             else
                 etiquetaRomaji.alpha = 0.0F
+        }
+
+        val tiempos = arrayOf("1", "2", "3", "5", "10", "15", "20", "30", "45", "60")
+
+        pickerSegundos.minValue = 0
+        pickerSegundos.maxValue = tiempos.size - 1
+        pickerSegundos.displayedValues = tiempos
+        pickerSegundos.wrapSelectorWheel = false
+        pickerSegundos.value = tiempos.indexOfFirst {
+            it == segundos.toString()
+        }
+
+        pickerSegundos.setOnValueChangedListener { _, _, newVal ->
+            segundos = tiempos[newVal].toInt()
+            siguienteKana()
         }
 
         timeRemaining = segundos
