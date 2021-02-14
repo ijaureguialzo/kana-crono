@@ -15,3 +15,4 @@
 "LEVEL_BASIC" = "Basic";
 "LEVEL_DIACRITICS" = "Diacritics";
 "LEVEL_DIGRAPHS" = "Digraphs";
+"LEVEL_EXTRA" = "Extra";

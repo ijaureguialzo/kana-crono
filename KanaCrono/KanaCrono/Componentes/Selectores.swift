@@ -26,6 +26,10 @@ struct Selectores: View {
                     .tag(Nivel.tenten)
                 Text("LEVEL_DIGRAPHS")
                     .tag(Nivel.compuestos)
+                if(vm.silabarioSeleccionado == .katakana) {
+                    Text("LEVEL_EXTRA")
+                        .tag(Nivel.extra)
+                }
             }
         }
             .pickerStyle(SegmentedPickerStyle())

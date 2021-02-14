@@ -85,10 +85,13 @@ let katakana_compuestos = [
 let katakana_extra = [
     "ファ": "fa", "フィ": "fi", "フェ": "fe", "フォ": "fo",
     "ティ": "ti", "トゥ": "tu",
-    "ディ": "di",
-    "ヴァ": "va", "ヴィ": "vi", "ヴェ": "ve", "ヴォ": "vo",
-    "ウィ": "wi", "ウォ": "wo",
-] // 13
+    "ディ": "di", "ドゥ": "du",
+    "ヴァ": "va", "ヴィ": "vi", "ヴ": "vu", "ヴェ": "ve", "ヴォ": "vo",
+    "ウィ": "wi", "ウェ": "we", "ウォ": "wo",
+    "シェ": "she",
+    "チェ": "che",
+    "ジェ": "je",
+] // 19
 
 enum Silabario: String, CaseIterable, Identifiable {
     case hiragana
@@ -101,6 +104,7 @@ enum Nivel: String, CaseIterable, Identifiable {
     case basico
     case tenten
     case compuestos
+    case extra
 
     var id: String { self.rawValue }
 }
@@ -127,7 +131,7 @@ func tuplasKana(cantidad aleatorios: Int, _ silabario: Silabario = .hiragana, ni
                 aleatorio = hiragana_basico
                     .merging(hiragana_tenten, uniquingKeysWith: { (current, _) in current })
                     .randomElement()!
-            case .compuestos:
+            case .compuestos, .extra:
                 aleatorio = hiragana_basico
                     .merging(hiragana_tenten, uniquingKeysWith: { (current, _) in current })
                     .merging(hiragana_compuestos, uniquingKeysWith: { (current, _) in current })
@@ -143,6 +147,11 @@ func tuplasKana(cantidad aleatorios: Int, _ silabario: Silabario = .hiragana, ni
                     .merging(katakana_tenten, uniquingKeysWith: { (current, _) in current })
                     .randomElement()!
             case .compuestos:
+                aleatorio = katakana_basico
+                    .merging(katakana_tenten, uniquingKeysWith: { (current, _) in current })
+                    .merging(katakana_compuestos, uniquingKeysWith: { (current, _) in current })
+                    .randomElement()!
+            case .extra:
                 aleatorio = katakana_basico
                     .merging(katakana_tenten, uniquingKeysWith: { (current, _) in current })
                     .merging(katakana_compuestos, uniquingKeysWith: { (current, _) in current })

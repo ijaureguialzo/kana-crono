@@ -23,7 +23,7 @@ struct ContentView: View {
                 Spacer()
 
                 Selectores()
-                    .padding(.horizontal, 40)
+                    .padding(.horizontal, 20)
 
                 Spacer()
 
