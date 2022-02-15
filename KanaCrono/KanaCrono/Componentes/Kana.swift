@@ -20,9 +20,9 @@ struct Kana: View {
     // REF: https://www.answertopia.com/swiftui/working-with-gesture-recognizers-in-swiftui/
     var body: some View {
         Text(vm.kana)
-            .frame(minWidth: 220)
+            .frame(minWidth: 240, minHeight: 240)
             .opacity(transparencia)
-            .font(.custom("YuKyo-Medium", size: 100))
+            .font(vm.fuente)
             .padding()
             .foregroundColor(Color(.label))
             .background(Color("Fondo"))

@@ -16,3 +16,7 @@
 "LEVEL_DIACRITICS" = "Diacríticos";
 "LEVEL_DIGRAPHS" = "Dígrafos";
 "LEVEL_EXTRA" = "Extra";
+
+"PICKER_FONT" = "Font";
+"FONT_NORMAL" = "Normal";
+"FONT_CURSIVE" = "Cursiva";

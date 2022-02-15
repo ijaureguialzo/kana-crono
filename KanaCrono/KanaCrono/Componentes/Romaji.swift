@@ -20,7 +20,7 @@ struct Romaji: View {
     var body: some View {
         Text(vm.romaji)
             .opacity(transparencia)
-            .frame(minWidth: 220)
+            .frame(minWidth: 60, minHeight: 60)
             .font(.title)
             .padding()
             .foregroundColor(Color(.systemBackground))

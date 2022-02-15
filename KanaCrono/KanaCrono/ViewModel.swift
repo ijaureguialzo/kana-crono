@@ -6,6 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
+
+enum Fuente: String, CaseIterable, Identifiable {
+    case normal
+    case cursiva
+
+    var id: String { self.rawValue }
+}
 
 // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-environmentobject-to-share-data-between-views
 class ViewModel: ObservableObject {
@@ -19,6 +27,18 @@ class ViewModel: ObservableObject {
 
     @Published var silabarioSeleccionado = Silabario.hiragana
     @Published var nivelSeleccionado = Nivel.basico
+
+    @Published var fuenteSeleccionada = Fuente.normal {
+        didSet {
+            switch fuenteSeleccionada {
+            case .normal:
+                fuente = .system(size: 100)
+            case .cursiva:
+                fuente = .custom("YuKyo-Medium", size: 100)
+            }
+        }
+    }
+    @Published var fuente: Font = .system(size: 100)
 
     @Published var verKana = true {
         didSet {

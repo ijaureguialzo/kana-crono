@@ -31,6 +31,13 @@ struct Selectores: View {
                         .tag(Nivel.extra)
                 }
             }
+
+            Picker("PICKER_FONT", selection: $vm.fuenteSeleccionada) {
+                Text("FONT_NORMAL")
+                    .tag(Fuente.normal)
+                Text("FONT_CURSIVE")
+                    .tag(Fuente.cursiva)
+            }
         }
             .pickerStyle(SegmentedPickerStyle())
     }
