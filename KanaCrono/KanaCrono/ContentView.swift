@@ -14,8 +14,6 @@ struct ContentView: View {
 
     @EnvironmentObject var vm: ViewModel
 
-    @State private var segundos = 5
-
     var body: some View {
 
         if sizeClass == .regular {
@@ -43,7 +41,7 @@ struct ContentView: View {
 
                     Divider()
 
-                    StepperSegundos(segundos: $segundos)
+                    StepperSegundos()
                         .padding(.horizontal, 80)
 
                     Divider()
@@ -51,7 +49,7 @@ struct ContentView: View {
 
                 Spacer()
 
-                Reloj(segundos: $segundos)
+                Reloj()
 
                 Spacer()
             }
@@ -74,11 +72,11 @@ struct ContentView: View {
                     HStack {
                         Spacer()
 
-                        Reloj(segundos: $segundos)
+                        Reloj()
 
                         Spacer()
 
-                        StepperSegundos(segundos: $segundos)
+                        StepperSegundos()
 
                         Spacer()
                     }

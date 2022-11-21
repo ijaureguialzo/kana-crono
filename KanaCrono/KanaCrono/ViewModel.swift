@@ -21,6 +21,8 @@ class ViewModel: ObservableObject {
     @Published var kana = "きゅ"
     @Published var romaji = "kyu"
 
+    @Published var segundos = 5
+
     init() {
         kanaAleatorio()
     }

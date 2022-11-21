@@ -15,8 +15,6 @@ struct Reloj: View {
 
     @EnvironmentObject var vm: ViewModel
 
-    @Binding var segundos: Int
-
     var body: some View {
         HStack(spacing: 20) {
 
@@ -40,9 +38,9 @@ struct Reloj: View {
                 .frame(width: 25)
 
             Text("\(vm.timeRemaining)")
-                .onChange(of: segundos) { _ in
+                .onChange(of: vm.segundos) { _ in
                 vm.pararReloj()
-                vm.timeRemaining = segundos
+                vm.timeRemaining = vm.segundos
                 vm.iniciarReloj()
             }
                 .gesture(TapGesture().onEnded { _ in
@@ -51,13 +49,13 @@ struct Reloj: View {
                 })
                 .onChange(of: vm.silabarioSeleccionado) { _ in
                 vm.pararReloj()
-                vm.timeRemaining = segundos
+                vm.timeRemaining = vm.segundos
                 vm.iniciarReloj()
                 nuevoKana()
             }
                 .onChange(of: vm.nivelSeleccionado) { _ in
                 vm.pararReloj()
-                vm.timeRemaining = segundos
+                vm.timeRemaining = vm.segundos
                 vm.iniciarReloj()
                 nuevoKana()
             }
@@ -73,7 +71,7 @@ struct Reloj: View {
                             vm.verRomajiTemporal = true
                         }
                     } else {
-                        vm.timeRemaining = segundos
+                        vm.timeRemaining = vm.segundos
                         nuevoKana()
                     }
                 }
@@ -86,7 +84,7 @@ struct Reloj: View {
 
             Button(action: {
                 vm.pararReloj()
-                vm.timeRemaining = segundos
+                vm.timeRemaining = vm.segundos
                 vm.iniciarReloj()
                 nuevoKana()
             }) {
@@ -128,7 +126,7 @@ struct Reloj_CustomPreview: View {
     @State private var segundos = 5
 
     var body: some View {
-        Reloj(segundos: $segundos)
+        Reloj()
             .environmentObject(ViewModel())
     }
 }
