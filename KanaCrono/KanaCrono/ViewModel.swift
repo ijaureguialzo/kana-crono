@@ -106,4 +106,10 @@ class ViewModel: ObservableObject {
     func iniciarReloj() {
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     }
+
+    func reiniciarReloj() {
+        pararReloj()
+        timeRemaining = segundos
+        iniciarReloj()
+    }
 }

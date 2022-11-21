@@ -39,24 +39,18 @@ struct Reloj: View {
 
             Text("\(vm.timeRemaining)")
                 .onChange(of: vm.segundos) { _ in
-                vm.pararReloj()
-                vm.timeRemaining = vm.segundos
-                vm.iniciarReloj()
+                vm.reiniciarReloj()
             }
                 .gesture(TapGesture().onEnded { _ in
                     vm.verKanaTemporal = true
                     vm.verRomajiTemporal = true
                 })
                 .onChange(of: vm.silabarioSeleccionado) { _ in
-                vm.pararReloj()
-                vm.timeRemaining = vm.segundos
-                vm.iniciarReloj()
+                vm.reiniciarReloj()
                 nuevoKana()
             }
                 .onChange(of: vm.nivelSeleccionado) { _ in
-                vm.pararReloj()
-                vm.timeRemaining = vm.segundos
-                vm.iniciarReloj()
+                vm.reiniciarReloj()
                 nuevoKana()
             }
                 .onReceive(vm.timer) { _ in
@@ -83,9 +77,7 @@ struct Reloj: View {
                 .cornerRadius(40)
 
             Button(action: {
-                vm.pararReloj()
-                vm.timeRemaining = vm.segundos
-                vm.iniciarReloj()
+                vm.reiniciarReloj()
                 nuevoKana()
             }) {
                 Image(systemName: "forward.fill")
