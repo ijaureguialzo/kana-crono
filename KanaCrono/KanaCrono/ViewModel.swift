@@ -7,6 +7,10 @@
 
 import Foundation
 import SwiftUI
+import AVFoundation
+
+// REF: Global para evitar un memory-leak: https://stackoverflow.com/a/60309746/14378620
+let synthesizer = AVSpeechSynthesizer()
 
 enum Fuente: String, CaseIterable, Identifiable {
     case normal
@@ -111,5 +115,25 @@ class ViewModel: ObservableObject {
         pararReloj()
         timeRemaining = segundos
         iniciarReloj()
+    }
+
+    func leerKana() {
+        // REF: https://nshipster.com/avspeechsynthesizer/
+        if audio {
+            synthesizer.stopSpeaking(at: .immediate)
+
+            let utterance = AVSpeechUtterance(string: kana)
+            utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+            utterance.rate = AVSpeechUtteranceMinimumSpeechRate
+
+            synthesizer.speak(utterance)
+        }
+    }
+
+    func nuevoKana() {
+        verKanaTemporal = false
+        verRomajiTemporal = false
+        kanaAleatorio()
+        leerKana()
     }
 }

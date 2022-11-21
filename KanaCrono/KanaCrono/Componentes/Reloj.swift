@@ -6,10 +6,6 @@
 //
 
 import SwiftUI
-import AVFoundation
-
-// REF: Global para evitar un memory-leak: https://stackoverflow.com/a/60309746/14378620
-let synthesizer = AVSpeechSynthesizer()
 
 struct Reloj: View {
 
@@ -47,11 +43,11 @@ struct Reloj: View {
                 })
                 .onChange(of: vm.silabarioSeleccionado) { _ in
                 vm.reiniciarReloj()
-                nuevoKana()
+                vm.nuevoKana()
             }
                 .onChange(of: vm.nivelSeleccionado) { _ in
                 vm.reiniciarReloj()
-                nuevoKana()
+                vm.nuevoKana()
             }
                 .onReceive(vm.timer) { _ in
 
@@ -66,7 +62,7 @@ struct Reloj: View {
                         }
                     } else {
                         vm.timeRemaining = vm.segundos
-                        nuevoKana()
+                        vm.nuevoKana()
                     }
                 }
             }
@@ -78,31 +74,11 @@ struct Reloj: View {
 
             Button(action: {
                 vm.reiniciarReloj()
-                nuevoKana()
+                vm.nuevoKana()
             }) {
                 Image(systemName: "forward.fill")
                     .font(.title)
             }
-
-        }
-    }
-
-    func nuevoKana() {
-
-        vm.verKanaTemporal = false
-        vm.verRomajiTemporal = false
-
-        vm.kanaAleatorio()
-
-        // REF: https://nshipster.com/avspeechsynthesizer/
-        if vm.audio {
-            synthesizer.stopSpeaking(at: .immediate)
-
-            let utterance = AVSpeechUtterance(string: vm.kana)
-            utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
-            utterance.rate = AVSpeechUtteranceMinimumSpeechRate
-
-            synthesizer.speak(utterance)
         }
     }
 }
