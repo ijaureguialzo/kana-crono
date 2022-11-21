@@ -136,4 +136,8 @@ class ViewModel: ObservableObject {
         kanaAleatorio()
         leerKana()
     }
+
+    func todoVisible() -> Bool {
+        return (verKana || verKanaTemporal) && (verRomaji || verRomajiTemporal)
+    }
 }

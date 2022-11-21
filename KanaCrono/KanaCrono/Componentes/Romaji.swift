@@ -27,7 +27,12 @@ struct Romaji: View {
             .background(Color("AccentColor"))
             .cornerRadius(10.0)
             .gesture(TapGesture().onEnded { _ in
-                vm.verRomajiTemporal = true
+                if vm.todoVisible() {
+                    vm.reiniciarReloj()
+                    vm.nuevoKana()
+                } else {
+                    vm.verRomajiTemporal = true
+                }
             })
     }
 }
