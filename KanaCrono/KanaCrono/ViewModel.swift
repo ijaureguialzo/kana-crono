@@ -32,7 +32,13 @@ class ViewModel: ObservableObject {
         timeRemaining = segundos
     }
 
-    @AppStorage("silabarioSeleccionado") var silabarioSeleccionado = Silabario.hiragana
+    @AppStorage("silabarioSeleccionado") var silabarioSeleccionado = Silabario.hiragana {
+        didSet {
+            if oldValue == .katakana && nivelSeleccionado == .extra {
+                nivelSeleccionado = .compuestos
+            }
+        }
+    }
     @AppStorage("nivelSeleccionado") var nivelSeleccionado = Nivel.basico
     @AppStorage("fuenteSeleccionada") var fuenteSeleccionada = Fuente.normal
 
