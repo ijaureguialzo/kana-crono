@@ -18,10 +18,13 @@ struct Romaji: View {
     }
 
     var body: some View {
+        
+        let width = UIScreen.main.bounds.width * 0.6
+
         Text(vm.romaji)
             .opacity(transparencia)
-            .frame(minWidth: 60, minHeight: 60)
-            .font(.title)
+            .frame(minWidth: width, minHeight: width)
+            .font(.system(size: 50))
             .padding()
             .foregroundColor(Color(.systemBackground))
             .background(Color("AccentColor"))

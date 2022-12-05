@@ -14,83 +14,78 @@ struct ContentView: View {
 
     @EnvironmentObject var vm: ViewModel
 
+    @State var showSettings = false
+
+    init() {
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
     var body: some View {
 
-        if sizeClass == .regular {
-            VStack {
-                Spacer()
-
-                Selectores()
-                    .padding(.horizontal, 20)
-
-                Spacer()
-
+        VStack() {
+            if sizeClass == .regular {
                 VStack {
+                    Spacer()
                     Kana()
+                    Reloj()
+                        .frame(height: 30)
+                        .foregroundColor(Color(UIColor.lightGray))
+                        .opacity(0.33)
                     Romaji()
-                }
-                    .padding(20)
-
-                Spacer()
-
-                VStack {
-                    Divider()
-
-                    OpcionesVisibilidad()
-                        .padding(.horizontal, 10)
-
-                    Divider()
-
-                    StepperSegundos()
-                        .padding(.horizontal, 80)
-
-                    Divider()
-                }
-
-                Spacer()
-
-                Reloj()
-
-                Spacer()
-            }
-        } else {
-            HStack {
-                VStack {
                     Spacer()
-
-                    Selectores()
-                        .padding(.bottom, 20)
-
-                    Divider()
-
-                    OpcionesVisibilidad()
-
-                    Divider()
-
-                    Spacer()
-
-                    HStack {
+                    Button(action: {
+                        self.showSettings = true
+                    }) {
+                        Text(Image(systemName: "gearshape"))
+                            .foregroundColor(Color(UIColor.lightGray))
+                            .opacity(0.33)
+                    }
+                        .sheet(isPresented: $showSettings, content: {
+                        Settings()
+                    }).padding(.bottom, 15)
+                }
+            } else {
+                HStack {
+                    VStack {
                         Spacer()
 
-                        Reloj()
+                        Divider()
+
+                        OpcionesVisibilidad()
+
+                        Divider()
 
                         Spacer()
 
-                        StepperSegundos()
+                        HStack {
+                            Spacer()
+
+                            Reloj()
+                                .opacity(0.5)
+
+                            Spacer()
+
+                            StepperSegundos()
+
+                            Spacer()
+                        }
 
                         Spacer()
                     }
+                        .padding()
 
-                    Spacer()
+                    VStack {
+                        Kana()
+                        Romaji()
+                    }
+                        .padding()
                 }
-                    .padding()
-
-                VStack {
-                    Kana()
-                    Romaji()
-                }
-                    .padding()
             }
+
         }
     }
 }

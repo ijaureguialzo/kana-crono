@@ -19,7 +19,6 @@ struct StepperSegundos: View {
         if sizeClass == .regular {
             HStack {
                 Text("\(vm.segundos) SECONDS")
-                    .padding(.trailing, 8)
                 Stepper("Segundos", value: $vm.segundos, in: 1...60)
                     .labelsHidden()
             } .scaleEffect(0.8)
@@ -28,7 +27,6 @@ struct StepperSegundos: View {
                 Stepper("Segundos", value: $vm.segundos, in: 1...60)
                     .labelsHidden()
                 Text("\(vm.segundos) SECONDS")
-                    .padding(.top, 3)
             } .scaleEffect(0.8)
         }
     }

@@ -12,7 +12,7 @@ struct Reloj: View {
     @EnvironmentObject var vm: ViewModel
 
     var body: some View {
-        HStack(spacing: 20) {
+        HStack() {
 
             Button(action: {
                 if vm.timerRunning {
@@ -25,13 +25,10 @@ struct Reloj: View {
             }) {
                 if vm.timerRunning {
                     Image(systemName: "pause.fill")
-                        .font(.title)
                 } else {
                     Image(systemName: "play.fill")
-                        .font(.title)
                 }
             }
-                .frame(width: 25)
 
             Text("\(vm.timeRemaining)")
                 .onChange(of: vm.segundos) { _ in
@@ -66,18 +63,12 @@ struct Reloj: View {
                     }
                 }
             }
-                .font(.system(size: 36))
-                .frame(width: 80, height: 80, alignment: .center)
-                .foregroundColor(.accentColor)
-                .background(Color(.systemGray6))
-                .cornerRadius(40)
 
             Button(action: {
                 vm.reiniciarReloj()
                 vm.nuevoKana()
             }) {
                 Image(systemName: "forward.fill")
-                    .font(.title)
             }
         }
     }
