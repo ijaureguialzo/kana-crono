@@ -10,8 +10,8 @@
 // REF: https://stackoverflow.com/a/64347096/14378620
 
 "PICKER_SYLLABARY" = "Syllabary";
-
 "PICKER_LEVEL" = "Level";
+
 "LEVEL_BASIC" = "Basic";
 "LEVEL_DIACRITICS" = "Diacritics";
 "LEVEL_DIGRAPHS" = "Digraphs";
