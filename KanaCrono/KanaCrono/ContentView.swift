@@ -43,8 +43,6 @@ struct ContentView: View {
                     Spacer()
                     BotonAjustes(showSettings: $showSettings)
                         .padding(.bottom)
-                        .foregroundColor(Color(UIColor.lightGray))
-                        .opacity(0.33)
                 }
             } else {
                 let lado = UIScreen.main.bounds.height * 0.66
@@ -64,8 +62,6 @@ struct ContentView: View {
                     Spacer()
                     BotonAjustes(showSettings: $showSettings)
                         .padding(.bottom)
-                        .foregroundColor(Color(UIColor.lightGray))
-                        .opacity(0.33)
                 }
             }
         }
