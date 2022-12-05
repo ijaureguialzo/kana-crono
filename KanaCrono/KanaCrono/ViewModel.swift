@@ -58,7 +58,7 @@ class ViewModel: ObservableObject {
     }
     @Published var verKanaTemporal = false
 
-    @Published var verRomaji = false {
+    @Published var verRomaji = true {
         didSet {
             verRomajiTemporal = verRomaji
 
