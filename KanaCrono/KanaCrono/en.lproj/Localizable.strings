@@ -20,3 +20,9 @@
 "PICKER_FONT" = "Font";
 "FONT_NORMAL" = "Normal";
 "FONT_CURSIVE" = "Cursive";
+
+"SETTINGS_SYLLABARY" = "Syllabary";
+"SETTINGS_FONT" = "Font";
+"SETTINGS_VISIBILITY" = "Visibility";
+"SETTINGS_TIME" = "Time";
+"SETTINGS_TITLE" = "Settings";

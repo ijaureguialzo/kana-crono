@@ -16,20 +16,20 @@ struct Settings: View {
         NavigationView {
 
             List {
-                Section(header: Text("Silabario")) {
+                Section(header: Text("SETTINGS_SYLLABARY")) {
                     Selectores()
                 }
-                Section(header: Text("Fuente")) {
+                Section(header: Text("SETTINGS_FONT")) {
                     SelectorFuente()
                 }
-                Section(header: Text("Visibilidad")) {
+                Section(header: Text("SETTINGS_VISIBILITY")) {
                     OpcionesVisibilidad()
                 }
-                Section(header: Text("Tiempo")) {
+                Section(header: Text("SETTINGS_TIME")) {
                     StepperSegundos()
                 }
             }.listStyle(.plain)
-                .navigationBarTitle("Settings")
+                .navigationBarTitle("SETTINGS_TITLE")
                 .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
