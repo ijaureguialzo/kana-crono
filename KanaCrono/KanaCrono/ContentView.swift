@@ -28,56 +28,42 @@ struct ContentView: View {
 
         VStack() {
             if sizeClass == .regular {
-                VStack {
+                let lado = UIScreen.main.bounds.width * 0.66
+
+                VStack(spacing: 0) {
                     Spacer()
                     Kana()
+                        .frame(maxWidth: lado, maxHeight: lado)
                     Reloj()
-                        .frame(height: 30)
+                        .padding()
                         .foregroundColor(Color(UIColor.lightGray))
                         .opacity(0.33)
                     Romaji()
+                        .frame(maxWidth: lado, maxHeight: lado)
                     Spacer()
                     BotonAjustes(showSettings: $showSettings)
-                        .padding(.bottom, 15)
+                        .padding(.bottom)
                 }
             } else {
-                HStack {
-                    VStack {
-                        Spacer()
+                let lado = UIScreen.main.bounds.height * 0.66
 
-                        Divider()
-
-                        OpcionesVisibilidad()
-
-                        Divider()
-
-                        Spacer()
-
-                        HStack {
-                            Spacer()
-
-                            Reloj()
-                                .opacity(0.5)
-
-                            Spacer()
-
-                            StepperSegundos()
-
-                            Spacer()
-                        }
-
-                        Spacer()
-                    }
-                        .padding()
-
-                    VStack {
+                VStack(spacing: 0) {
+                    Spacer()
+                    HStack(spacing: 0) {
                         Kana()
+                            .frame(maxWidth: lado, maxHeight: lado)
+                        Reloj()
+                            .padding()
+                            .foregroundColor(Color(UIColor.lightGray))
+                            .opacity(0.33)
                         Romaji()
+                            .frame(maxWidth: lado, maxHeight: lado)
                     }
-                        .padding()
+                    Spacer()
+                    BotonAjustes(showSettings: $showSettings)
+                        .padding(.bottom)
                 }
             }
-
         }
     }
 }

@@ -20,10 +20,8 @@ struct Kana: View {
     // REF: https://www.answertopia.com/swiftui/working-with-gesture-recognizers-in-swiftui/
     var body: some View {
 
-        let width = UIScreen.main.bounds.width * 0.66
-
         Text(vm.kana)
-            .frame(minWidth: width, minHeight: width)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .opacity(transparencia)
             .font(vm.fuente)
             .foregroundColor(Color(.label))
@@ -49,6 +47,8 @@ struct Kana_Previews: PreviewProvider {
 struct Kana_CustomPreview: View {
 
     var body: some View {
-        Kana().environmentObject(ViewModel())
+        VStack {
+            Kana().environmentObject(ViewModel())
+        } .frame(maxWidth: 240, maxHeight: 240)
     }
 }
