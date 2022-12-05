@@ -6,16 +6,10 @@
 //
 
 import SwiftUI
-import AVFoundation
-
-// REF: Global para evitar un memory-leak: https://stackoverflow.com/a/60309746/14378620
-let synthesizer = AVSpeechSynthesizer()
 
 struct Reloj: View {
 
     @EnvironmentObject var vm: ViewModel
-
-    @Binding var segundos: Int
 
     var body: some View {
         HStack(spacing: 20) {
@@ -40,26 +34,20 @@ struct Reloj: View {
                 .frame(width: 25)
 
             Text("\(vm.timeRemaining)")
-                .onChange(of: segundos) { _ in
-                vm.pararReloj()
-                vm.timeRemaining = segundos
-                vm.iniciarReloj()
+                .onChange(of: vm.segundos) { _ in
+                vm.reiniciarReloj()
             }
                 .gesture(TapGesture().onEnded { _ in
                     vm.verKanaTemporal = true
                     vm.verRomajiTemporal = true
                 })
                 .onChange(of: vm.silabarioSeleccionado) { _ in
-                vm.pararReloj()
-                vm.timeRemaining = segundos
-                vm.iniciarReloj()
-                nuevoKana()
+                vm.reiniciarReloj()
+                vm.nuevoKana()
             }
                 .onChange(of: vm.nivelSeleccionado) { _ in
-                vm.pararReloj()
-                vm.timeRemaining = segundos
-                vm.iniciarReloj()
-                nuevoKana()
+                vm.reiniciarReloj()
+                vm.nuevoKana()
             }
                 .onReceive(vm.timer) { _ in
 
@@ -73,8 +61,8 @@ struct Reloj: View {
                             vm.verRomajiTemporal = true
                         }
                     } else {
-                        vm.timeRemaining = segundos
-                        nuevoKana()
+                        vm.timeRemaining = vm.segundos
+                        vm.nuevoKana()
                     }
                 }
             }
@@ -85,34 +73,12 @@ struct Reloj: View {
                 .cornerRadius(40)
 
             Button(action: {
-                vm.pararReloj()
-                vm.timeRemaining = segundos
-                vm.iniciarReloj()
-                nuevoKana()
+                vm.reiniciarReloj()
+                vm.nuevoKana()
             }) {
                 Image(systemName: "forward.fill")
                     .font(.title)
             }
-
-        }
-    }
-
-    func nuevoKana() {
-
-        vm.verKanaTemporal = false
-        vm.verRomajiTemporal = false
-
-        vm.kanaAleatorio()
-
-        // REF: https://nshipster.com/avspeechsynthesizer/
-        if vm.audio {
-            synthesizer.stopSpeaking(at: .immediate)
-
-            let utterance = AVSpeechUtterance(string: vm.kana)
-            utterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
-            utterance.rate = AVSpeechUtteranceMinimumSpeechRate
-
-            synthesizer.speak(utterance)
         }
     }
 }
@@ -128,7 +94,7 @@ struct Reloj_CustomPreview: View {
     @State private var segundos = 5
 
     var body: some View {
-        Reloj(segundos: $segundos)
+        Reloj()
             .environmentObject(ViewModel())
     }
 }

@@ -28,7 +28,12 @@ struct Kana: View {
             .background(Color("Fondo"))
             .cornerRadius(10.0)
             .gesture(TapGesture().onEnded { _ in
-                vm.verKanaTemporal = true
+                if vm.todoVisible() {
+                    vm.reiniciarReloj()
+                    vm.nuevoKana()
+                } else {
+                    vm.verKanaTemporal = true
+                }
             })
     }
 }
