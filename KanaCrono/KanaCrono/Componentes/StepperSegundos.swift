@@ -16,19 +16,11 @@ struct StepperSegundos: View {
     // REF: https://levelup.gitconnected.com/localization-with-swiftui-5abbeb275d5
     // REF: https://levelup.gitconnected.com/step-by-step-guide-for-localizing-plurals-in-ios-57f9deaade3e
     var body: some View {
-        if sizeClass == .regular {
-            HStack {
-                Text("\(vm.segundos) SECONDS")
-                Spacer()
-                Stepper("Segundos", value: $vm.segundos, in: 1...60)
-                    .labelsHidden()
-            }
-        } else {
-            VStack {
-                Stepper("Segundos", value: $vm.segundos, in: 1...60)
-                    .labelsHidden()
-                Text("\(vm.segundos) SECONDS")
-            }
+        HStack {
+            Text("\(vm.segundos) SECONDS")
+            Spacer()
+            Stepper("Segundos", value: $vm.segundos, in: 1...60)
+                .labelsHidden()
         }
     }
 }
@@ -44,6 +36,8 @@ struct StepperSegundos_CustomPreview: View {
     @State private var segundos = 5
 
     var body: some View {
-        StepperSegundos().environmentObject(ViewModel())
+        List {
+            StepperSegundos().environmentObject(ViewModel())
+        }
     }
 }
