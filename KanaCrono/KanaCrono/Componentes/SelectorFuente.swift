@@ -32,6 +32,8 @@ struct SelectorFuente_Previews: PreviewProvider {
 
 struct SelectorFuente_CustomPreview: View {
     var body: some View {
-        SelectorFuente().environmentObject(ViewModel())
+        List {
+            SelectorFuente().environmentObject(ViewModel())
+        }
     }
 }

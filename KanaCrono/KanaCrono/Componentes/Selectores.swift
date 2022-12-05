@@ -44,6 +44,8 @@ struct Selectores_Previews: PreviewProvider {
 
 struct Selectores_CustomPreview: View {
     var body: some View {
-        Selectores().environmentObject(ViewModel())
+        List {
+            Selectores().environmentObject(ViewModel())
+        }
     }
 }
