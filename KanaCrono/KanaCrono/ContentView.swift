@@ -37,16 +37,8 @@ struct ContentView: View {
                         .opacity(0.33)
                     Romaji()
                     Spacer()
-                    Button(action: {
-                        self.showSettings = true
-                    }) {
-                        Text(Image(systemName: "gearshape"))
-                            .foregroundColor(Color(UIColor.lightGray))
-                            .opacity(0.33)
-                    }
-                        .sheet(isPresented: $showSettings, content: {
-                        Settings()
-                    }).padding(.bottom, 15)
+                    BotonAjustes(showSettings: $showSettings)
+                        .padding(.bottom, 15)
                 }
             } else {
                 HStack {

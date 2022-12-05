@@ -18,6 +18,7 @@
 		4127273D2574369000C79819 /* Kana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4127273C2574369000C79819 /* Kana.swift */; };
 		414E5E7B293E014900A0AF46 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E5E7A293E014900A0AF46 /* Settings.swift */; };
 		414E5E7D293E036C00A0AF46 /* SelectorFuente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E5E7C293E036C00A0AF46 /* SelectorFuente.swift */; };
+		414E5E7F293E21FA00A0AF46 /* BotonAjustes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E5E7E293E21FA00A0AF46 /* BotonAjustes.swift */; };
 		415EBF43258FCA8900FDF680 /* KanaCronoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415EBF42258FCA8900FDF680 /* KanaCronoUITests.swift */; };
 		41B0D361258E3615001B9C36 /* Romaji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B0D360258E3615001B9C36 /* Romaji.swift */; };
 		41C9420B2595774900DE63F1 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 41C9420D2595774900DE63F1 /* Localizable.stringsdict */; };
@@ -51,6 +52,7 @@
 		4127273C2574369000C79819 /* Kana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kana.swift; sourceTree = "<group>"; };
 		414E5E7A293E014900A0AF46 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		414E5E7C293E036C00A0AF46 /* SelectorFuente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorFuente.swift; sourceTree = "<group>"; };
+		414E5E7E293E21FA00A0AF46 /* BotonAjustes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotonAjustes.swift; sourceTree = "<group>"; };
 		415EBF40258FCA8900FDF680 /* KanaCronoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanaCronoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		415EBF42258FCA8900FDF680 /* KanaCronoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanaCronoUITests.swift; sourceTree = "<group>"; };
 		415EBF44258FCA8900FDF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				41CF4035258F618900A9D78F /* Reloj.swift */,
 				41CF403C258F6A7600A9D78F /* StepperSegundos.swift */,
 				414E5E7C293E036C00A0AF46 /* SelectorFuente.swift */,
+				414E5E7E293E21FA00A0AF46 /* BotonAjustes.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				412727312573B0BF00C79819 /* ViewModel.swift in Sources */,
 				412727352573B0EB00C79819 /* Selectores.swift in Sources */,
 				412281262573084A00FE373B /* ContentView.swift in Sources */,
+				414E5E7F293E21FA00A0AF46 /* BotonAjustes.swift in Sources */,
 				4127273D2574369000C79819 /* Kana.swift in Sources */,
 				412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */,
 				414E5E7D293E036C00A0AF46 /* SelectorFuente.swift in Sources */,
