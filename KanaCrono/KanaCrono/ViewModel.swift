@@ -25,28 +25,18 @@ class ViewModel: ObservableObject {
     @Published var kana = "きゅ"
     @Published var romaji = "kyu"
 
-    @Published var segundos = 5
+    @AppStorage("segundos") var segundos = 5
 
     init() {
         kanaAleatorio()
+        timeRemaining = segundos
     }
 
-    @Published var silabarioSeleccionado = Silabario.hiragana
-    @Published var nivelSeleccionado = Nivel.basico
+    @AppStorage("silabarioSeleccionado") var silabarioSeleccionado = Silabario.hiragana
+    @AppStorage("nivelSeleccionado") var nivelSeleccionado = Nivel.basico
+    @AppStorage("fuenteSeleccionada") var fuenteSeleccionada = Fuente.normal
 
-    @Published var fuenteSeleccionada = Fuente.normal {
-        didSet {
-            switch fuenteSeleccionada {
-            case .normal:
-                fuente = .system(size: 100)
-            case .cursiva:
-                fuente = .custom("YuKyo-Medium", size: 100)
-            }
-        }
-    }
-    @Published var fuente: Font = .system(size: 100)
-
-    @Published var verKana = true {
+    @AppStorage("verKana") var verKana = true {
         didSet {
             verKanaTemporal = verKana
 
@@ -58,7 +48,7 @@ class ViewModel: ObservableObject {
     }
     @Published var verKanaTemporal = false
 
-    @Published var verRomaji = true {
+    @AppStorage("verRomaji") var verRomaji = true {
         didSet {
             verRomajiTemporal = verRomaji
 
@@ -70,7 +60,7 @@ class ViewModel: ObservableObject {
     }
     @Published var verRomajiTemporal = false
 
-    @Published var audio = false {
+    @AppStorage("audio") var audio = false {
         didSet {
             verKanaTemporal = verKana
 

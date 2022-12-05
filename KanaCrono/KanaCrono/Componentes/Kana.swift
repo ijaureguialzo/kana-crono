@@ -23,7 +23,7 @@ struct Kana: View {
         Text(vm.kana)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .opacity(transparencia)
-            .font(vm.fuente)
+            .font(fuente())
             .foregroundColor(Color(.label))
             .background(Color("Fondo"))
             .cornerRadius(10.0)
@@ -35,6 +35,15 @@ struct Kana: View {
                     vm.verKanaTemporal = true
                 }
             })
+    }
+
+    func fuente() -> Font {
+        switch vm.fuenteSeleccionada {
+        case .cursiva:
+            return .custom("YuKyo-Medium", size: 100)
+        default:
+            return .system(size: 100)
+        }
     }
 }
 
