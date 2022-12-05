@@ -91,7 +91,7 @@ class ViewModel: ObservableObject {
     // REF: https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-a-timer-with-swiftui
     @Published var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @Published var timeRemaining = 5
-    @Published var timerRunning = true
+    @AppStorage("timerRunning") var timerRunning = true
 
     func pararReloj() {
         timer.upstream.connect().cancel()
