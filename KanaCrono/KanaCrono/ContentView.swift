@@ -14,82 +14,55 @@ struct ContentView: View {
 
     @EnvironmentObject var vm: ViewModel
 
+    @State var showSettings = false
+
+    init() {
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
     var body: some View {
 
-        if sizeClass == .regular {
-            VStack {
-                Spacer()
+        VStack() {
+            if sizeClass == .regular {
+                let lado = UIScreen.main.bounds.width * 0.66
 
-                Selectores()
-                    .padding(.horizontal, 20)
-
-                Spacer()
-
-                VStack {
+                VStack(spacing: 0) {
+                    Spacer()
                     Kana()
+                        .frame(maxWidth: lado, maxHeight: lado)
+                    Reloj()
+                        .padding()
+                        .foregroundColor(Color(UIColor.lightGray))
+                        .opacity(0.33)
                     Romaji()
-                }
-                    .padding(20)
-
-                Spacer()
-
-                VStack {
-                    Divider()
-
-                    OpcionesVisibilidad()
-                        .padding(.horizontal, 10)
-
-                    Divider()
-
-                    StepperSegundos()
-                        .padding(.horizontal, 80)
-
-                    Divider()
-                }
-
-                Spacer()
-
-                Reloj()
-
-                Spacer()
-            }
-        } else {
-            HStack {
-                VStack {
+                        .frame(maxWidth: lado, maxHeight: lado)
                     Spacer()
+                    BotonAjustes(showSettings: $showSettings)
+                        .padding(.bottom)
+                }
+            } else {
+                let lado = UIScreen.main.bounds.height * 0.66
 
-                    Selectores()
-                        .padding(.bottom, 20)
-
-                    Divider()
-
-                    OpcionesVisibilidad()
-
-                    Divider()
-
+                VStack(spacing: 0) {
                     Spacer()
-
-                    HStack {
-                        Spacer()
-
+                    HStack(spacing: 0) {
+                        Kana()
+                            .frame(maxWidth: lado, maxHeight: lado)
                         Reloj()
-
-                        Spacer()
-
-                        StepperSegundos()
-
-                        Spacer()
+                            .padding()
+                            .foregroundColor(Color(UIColor.lightGray))
+                            .opacity(0.33)
+                        Romaji()
+                            .frame(maxWidth: lado, maxHeight: lado)
                     }
-
                     Spacer()
+                    BotonAjustes(showSettings: $showSettings)
+                        .padding(.bottom)
                 }
-                    .padding()
-
-                VStack {
-                    Kana()
-                    Romaji()
-                }
-                    .padding()
             }
         }
     }

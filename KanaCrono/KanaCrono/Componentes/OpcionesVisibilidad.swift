@@ -12,21 +12,17 @@ struct OpcionesVisibilidad: View {
     @EnvironmentObject var vm: ViewModel
 
     var body: some View {
-        HStack {
+        VStack {
             Toggle(isOn: $vm.verKana) {
                 Text("Kana")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             Toggle(isOn: $vm.verRomaji) {
                 Text("Romaji")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
             Toggle(isOn: $vm.audio) {
                 Text("Audio")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
             }
         }
-            .scaleEffect(0.8)
     }
 }
 
@@ -38,6 +34,8 @@ struct OpcionesVisibilidad_Previews: PreviewProvider {
 
 struct OpcionesVisibilidad_CustomPreview: View {
     var body: some View {
-        OpcionesVisibilidad().environmentObject(ViewModel())
+        List {
+            OpcionesVisibilidad().environmentObject(ViewModel())
+        }
     }
 }

@@ -16,6 +16,9 @@
 		412727352573B0EB00C79819 /* Selectores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727342573B0EB00C79819 /* Selectores.swift */; };
 		412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412727372573B26F00C79819 /* OpcionesVisibilidad.swift */; };
 		4127273D2574369000C79819 /* Kana.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4127273C2574369000C79819 /* Kana.swift */; };
+		414E5E7B293E014900A0AF46 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E5E7A293E014900A0AF46 /* Settings.swift */; };
+		414E5E7D293E036C00A0AF46 /* SelectorFuente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E5E7C293E036C00A0AF46 /* SelectorFuente.swift */; };
+		414E5E7F293E21FA00A0AF46 /* BotonAjustes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E5E7E293E21FA00A0AF46 /* BotonAjustes.swift */; };
 		415EBF43258FCA8900FDF680 /* KanaCronoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415EBF42258FCA8900FDF680 /* KanaCronoUITests.swift */; };
 		41B0D361258E3615001B9C36 /* Romaji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B0D360258E3615001B9C36 /* Romaji.swift */; };
 		41C9420B2595774900DE63F1 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 41C9420D2595774900DE63F1 /* Localizable.stringsdict */; };
@@ -47,6 +50,9 @@
 		412727342573B0EB00C79819 /* Selectores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectores.swift; sourceTree = "<group>"; };
 		412727372573B26F00C79819 /* OpcionesVisibilidad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpcionesVisibilidad.swift; sourceTree = "<group>"; };
 		4127273C2574369000C79819 /* Kana.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kana.swift; sourceTree = "<group>"; };
+		414E5E7A293E014900A0AF46 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		414E5E7C293E036C00A0AF46 /* SelectorFuente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorFuente.swift; sourceTree = "<group>"; };
+		414E5E7E293E21FA00A0AF46 /* BotonAjustes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotonAjustes.swift; sourceTree = "<group>"; };
 		415EBF40258FCA8900FDF680 /* KanaCronoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanaCronoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		415EBF42258FCA8900FDF680 /* KanaCronoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanaCronoUITests.swift; sourceTree = "<group>"; };
 		415EBF44258FCA8900FDF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 				412281232573084A00FE373B /* KanaCronoApp.swift */,
 				412727302573B0BF00C79819 /* ViewModel.swift */,
 				412281252573084A00FE373B /* ContentView.swift */,
+				414E5E7A293E014900A0AF46 /* Settings.swift */,
 				4127273A2573B38300C79819 /* Componentes */,
 				4122813325730E5E00FE373B /* Silabarios.swift */,
 				412281272573084B00FE373B /* Assets.xcassets */,
@@ -131,6 +138,8 @@
 				41B0D360258E3615001B9C36 /* Romaji.swift */,
 				41CF4035258F618900A9D78F /* Reloj.swift */,
 				41CF403C258F6A7600A9D78F /* StepperSegundos.swift */,
+				414E5E7C293E036C00A0AF46 /* SelectorFuente.swift */,
+				414E5E7E293E21FA00A0AF46 /* BotonAjustes.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -260,10 +269,13 @@
 				412727312573B0BF00C79819 /* ViewModel.swift in Sources */,
 				412727352573B0EB00C79819 /* Selectores.swift in Sources */,
 				412281262573084A00FE373B /* ContentView.swift in Sources */,
+				414E5E7F293E21FA00A0AF46 /* BotonAjustes.swift in Sources */,
 				4127273D2574369000C79819 /* Kana.swift in Sources */,
 				412727382573B26F00C79819 /* OpcionesVisibilidad.swift in Sources */,
+				414E5E7D293E036C00A0AF46 /* SelectorFuente.swift in Sources */,
 				41CF403D258F6A7600A9D78F /* StepperSegundos.swift in Sources */,
 				412281242573084A00FE373B /* KanaCronoApp.swift in Sources */,
+				414E5E7B293E014900A0AF46 /* Settings.swift in Sources */,
 				41CF4036258F618900A9D78F /* Reloj.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"KanaCrono/Preview Content\"";
 				DEVELOPMENT_TEAM = RSEH385M54;
 				ENABLE_PREVIEWS = YES;
@@ -442,7 +454,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaureguialzo.KanaCrono;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -456,7 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_ASSET_PATHS = "\"KanaCrono/Preview Content\"";
 				DEVELOPMENT_TEAM = RSEH385M54;
 				ENABLE_PREVIEWS = YES;
@@ -466,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 2.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaureguialzo.KanaCrono;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

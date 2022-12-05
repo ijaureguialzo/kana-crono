@@ -10,8 +10,8 @@
 // REF: https://stackoverflow.com/a/64347096/14378620
 
 "PICKER_SYLLABARY" = "Syllabary";
-
 "PICKER_LEVEL" = "Level";
+
 "LEVEL_BASIC" = "Basic";
 "LEVEL_DIACRITICS" = "Diacritics";
 "LEVEL_DIGRAPHS" = "Digraphs";
@@ -20,3 +20,9 @@
 "PICKER_FONT" = "Font";
 "FONT_NORMAL" = "Normal";
 "FONT_CURSIVE" = "Cursive";
+
+"SETTINGS_SYLLABARY" = "Syllabary";
+"SETTINGS_FONT" = "Font";
+"SETTINGS_VISIBILITY" = "Visibility";
+"SETTINGS_TIME" = "Time";
+"SETTINGS_TITLE" = "Settings";

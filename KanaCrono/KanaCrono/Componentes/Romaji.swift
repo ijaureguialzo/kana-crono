@@ -18,11 +18,11 @@ struct Romaji: View {
     }
 
     var body: some View {
+
         Text(vm.romaji)
             .opacity(transparencia)
-            .frame(minWidth: 60, minHeight: 60)
-            .font(.title)
-            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .font(.system(size: 50))
             .foregroundColor(Color(.systemBackground))
             .background(Color("AccentColor"))
             .cornerRadius(10.0)
@@ -46,6 +46,8 @@ struct Romaji_Previews: PreviewProvider {
 struct Romaji_CustomPreview: View {
 
     var body: some View {
-        Romaji().environmentObject(ViewModel())
+        VStack {
+            Romaji().environmentObject(ViewModel())
+        } .frame(maxWidth: 240, maxHeight: 240)
     }
 }

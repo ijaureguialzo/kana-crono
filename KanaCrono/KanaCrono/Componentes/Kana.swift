@@ -19,11 +19,11 @@ struct Kana: View {
 
     // REF: https://www.answertopia.com/swiftui/working-with-gesture-recognizers-in-swiftui/
     var body: some View {
+
         Text(vm.kana)
-            .frame(minWidth: 240, minHeight: 240)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .opacity(transparencia)
-            .font(vm.fuente)
-            .padding()
+            .font(fuente())
             .foregroundColor(Color(.label))
             .background(Color("Fondo"))
             .cornerRadius(10.0)
@@ -36,6 +36,15 @@ struct Kana: View {
                 }
             })
     }
+
+    func fuente() -> Font {
+        switch vm.fuenteSeleccionada {
+        case .cursiva:
+            return .custom("YuKyo-Medium", size: 100)
+        default:
+            return .system(size: 100)
+        }
+    }
 }
 
 struct Kana_Previews: PreviewProvider {
@@ -47,6 +56,8 @@ struct Kana_Previews: PreviewProvider {
 struct Kana_CustomPreview: View {
 
     var body: some View {
-        Kana().environmentObject(ViewModel())
+        VStack {
+            Kana().environmentObject(ViewModel())
+        } .frame(maxWidth: 240, maxHeight: 240)
     }
 }

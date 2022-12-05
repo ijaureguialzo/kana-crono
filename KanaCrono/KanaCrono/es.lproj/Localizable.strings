@@ -17,6 +17,12 @@
 "LEVEL_DIGRAPHS" = "Dígrafos";
 "LEVEL_EXTRA" = "Extra";
 
-"PICKER_FONT" = "Font";
+"PICKER_FONT" = "Fuente";
 "FONT_NORMAL" = "Normal";
 "FONT_CURSIVE" = "Cursiva";
+
+"SETTINGS_SYLLABARY" = "Silabario";
+"SETTINGS_FONT" = "Fuente";
+"SETTINGS_VISIBILITY" = "Visibilidad";
+"SETTINGS_TIME" = "Tiempo";
+"SETTINGS_TITLE" = "Ajustes";
