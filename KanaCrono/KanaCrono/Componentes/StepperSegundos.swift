@@ -19,15 +19,16 @@ struct StepperSegundos: View {
         if sizeClass == .regular {
             HStack {
                 Text("\(vm.segundos) SECONDS")
+                Spacer()
                 Stepper("Segundos", value: $vm.segundos, in: 1...60)
                     .labelsHidden()
-            } .scaleEffect(0.8)
+            }
         } else {
             VStack {
                 Stepper("Segundos", value: $vm.segundos, in: 1...60)
                     .labelsHidden()
                 Text("\(vm.segundos) SECONDS")
-            } .scaleEffect(0.8)
+            }
         }
     }
 }
@@ -43,6 +44,6 @@ struct StepperSegundos_CustomPreview: View {
     @State private var segundos = 5
 
     var body: some View {
-        StepperSegundos()
+        StepperSegundos().environmentObject(ViewModel())
     }
 }
