@@ -33,7 +33,7 @@ struct Settings: View {
                 .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
-                    Text(Image(systemName: "xmark.circle"))
+                    Text(Image(systemName: "xmark.circle.fill"))
                         .foregroundColor(Color(UIColor.lightGray))
                         .opacity(0.33)
                 })
