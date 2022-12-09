@@ -9,18 +9,13 @@ import SwiftUI
 
 struct StepperSegundos: View {
 
-    @Environment(\.verticalSizeClass) var sizeClass
-
     @EnvironmentObject var vm: ViewModel
 
     // REF: https://levelup.gitconnected.com/localization-with-swiftui-5abbeb275d5
     // REF: https://levelup.gitconnected.com/step-by-step-guide-for-localizing-plurals-in-ios-57f9deaade3e
     var body: some View {
-        HStack {
+        Stepper(value: $vm.segundos, in: 1...60) {
             Text("\(vm.segundos) SECONDS")
-            Spacer()
-            Stepper("Segundos", value: $vm.segundos, in: 1...60)
-                .labelsHidden()
         }
     }
 }
