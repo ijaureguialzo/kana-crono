@@ -15,9 +15,8 @@ struct BotonAjustes: View {
         Button(action: {
             self.showSettings = true
         }) {
-            Text(Image(systemName: "gearshape"))
-                .foregroundColor(Color(UIColor.lightGray))
-                .opacity(0.33)
+            Text(Image(systemName: "gearshape.fill"))
+                .foregroundColor(Color(.tertiaryLabel))
         }
             .sheet(isPresented: $showSettings, content: {
             Settings()

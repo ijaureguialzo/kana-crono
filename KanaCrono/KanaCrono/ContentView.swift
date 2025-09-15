@@ -31,15 +31,16 @@ struct ContentView: View {
                 let lado = UIScreen.main.bounds.width * 0.66
 
                 VStack(spacing: 0) {
+                    Reloj()
+                        .padding(.top)
+                        .foregroundColor(Color(.tertiaryLabel))
                     Spacer()
                     Kana()
                         .frame(maxWidth: lado, maxHeight: lado)
-                    Reloj()
-                        .padding()
-                        .foregroundColor(Color(UIColor.lightGray))
-                        .opacity(0.33)
+                        .padding(.bottom)
                     Romaji()
                         .frame(maxWidth: lado, maxHeight: lado)
+                        .padding(.top)
                     Spacer()
                     BotonAjustes(showSettings: $showSettings)
                         .padding(.bottom)
@@ -48,16 +49,17 @@ struct ContentView: View {
                 let lado = UIScreen.main.bounds.height * 0.66
 
                 VStack(spacing: 0) {
+                    Reloj()
+                        .padding(.top)
+                        .foregroundColor(Color(.tertiaryLabel))
                     Spacer()
                     HStack(spacing: 0) {
                         Kana()
                             .frame(maxWidth: lado, maxHeight: lado)
-                        Reloj()
-                            .padding()
-                            .foregroundColor(Color(UIColor.lightGray))
-                            .opacity(0.33)
+                            .padding(.trailing)
                         Romaji()
                             .frame(maxWidth: lado, maxHeight: lado)
+                            .padding(.leading)
                     }
                     Spacer()
                     BotonAjustes(showSettings: $showSettings)
