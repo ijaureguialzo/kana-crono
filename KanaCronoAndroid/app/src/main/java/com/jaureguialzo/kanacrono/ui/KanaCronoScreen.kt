@@ -248,9 +248,9 @@ private fun KanaDisplay(viewModel: KanaCronoViewModel) {
 
     // Size: 66% of the smaller screen dimension (como iOS)
     val size = if (screenWidth > screenHeight) {
-        (screenHeight * 0.66).dp.coerceAtMost(300.dp)
+        (screenHeight * 0.66).dp
     } else {
-        (screenWidth * 0.66).dp.coerceAtMost(300.dp)
+        (screenWidth * 0.66).dp
     }
 
     val isDark = LocalContext.current.isDarkTheme()
@@ -277,7 +277,7 @@ private fun KanaDisplay(viewModel: KanaCronoViewModel) {
         Text(
             text = kana,
             fontFamily = if (viewModel.fuenteSeleccionada == Fuente.cursiva) getKyokashoFontFamily() else null,
-            fontSize = if (size.value > 200) 100.sp else 72.sp,
+            fontSize = 100.sp,
             fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSurface,
         )
@@ -296,9 +296,9 @@ private fun RomajiDisplay(viewModel: KanaCronoViewModel) {
 
     // Size: 66% of the smaller screen dimension (como iOS)
     val size = if (screenWidth > screenHeight) {
-        (screenHeight * 0.66).dp.coerceAtMost(300.dp)
+        (screenHeight * 0.66).dp
     } else {
-        (screenWidth * 0.66).dp.coerceAtMost(300.dp)
+        (screenWidth * 0.66).dp
     }
 
     val isDark = LocalContext.current.isDarkTheme()

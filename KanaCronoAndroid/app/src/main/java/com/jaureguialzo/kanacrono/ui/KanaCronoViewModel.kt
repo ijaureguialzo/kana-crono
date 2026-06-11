@@ -84,22 +84,19 @@ class KanaCronoViewModel : ViewModel() {
 
     // MARK: - Selección aleatoria (como kanaAleatorio en iOS)
     private fun kanaAleatorio() {
-        repeat(100) { // Máximo 100 intentos para evitar bucle infinito
-            val resultado = tuplasKana(cantidad = 1, silabarioSeleccionado, nivelSeleccionado)
-            val nuevoKana = resultado[0].first
-            val nuevoRomaji = resultado[0].second
-
-            if (nuevoKana != kanaAnterior) {
-                kana = nuevoKana
-                romaji = nuevoRomaji
-                kanaAnterior = nuevoKana
-                return
-            }
-        }
-        // Fallback: acepta cualquier valor si no encuentra uno distinto tras 100 intentos
         val resultado = tuplasKana(cantidad = 1, silabarioSeleccionado, nivelSeleccionado)
-        kana = resultado[0].first
-        romaji = resultado[0].second
+        val nuevoKana = resultado[0].first
+        val nuevoRomaji = resultado[0].second
+
+        if (nuevoKana != kanaAnterior) {
+            kana = nuevoKana
+            romaji = nuevoRomaji
+            kanaAnterior = nuevoKana
+        } else {
+            // Fallback: acepta cualquier valor si no encuentra uno distinto
+            kana = nuevoKana
+            romaji = nuevoRomaji
+        }
     }
 
     // MARK: - Timer (como en iOS)
@@ -113,11 +110,18 @@ class KanaCronoViewModel : ViewModel() {
         timer = Timer("kanacrono-timer", false)
         val task = object : java.util.TimerTask() {
             override fun run() {
-                if (timerRunning && timeRemaining > 0) {
-                    timeRemaining--
-                } else if (timerRunning) {
-                    timeRemaining = segundos
-                    nuevoKana()
+                if (timerRunning) {
+                    if (timeRemaining > 0) {
+                        timeRemaining--
+                        // Al llegar a 0, revelar kana y romaji temporalmente (como iOS)
+                        if (timeRemaining == 0) {
+                            _verKanaTemporal = true
+                            _verRomajiTemporal = true
+                        }
+                    } else {
+                        timeRemaining = segundos
+                        nuevoKana()
+                    }
                 }
             }
         }
