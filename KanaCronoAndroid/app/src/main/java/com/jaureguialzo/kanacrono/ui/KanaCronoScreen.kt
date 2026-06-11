@@ -137,7 +137,7 @@ private fun KanaCronoContent(
             // Portrait: stacked (como iOS portrait en portrait)
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 KanaDisplay(viewModel = viewModel)
                 RomajiDisplay(viewModel = viewModel)
