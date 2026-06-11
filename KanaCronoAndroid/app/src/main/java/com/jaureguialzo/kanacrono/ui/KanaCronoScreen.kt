@@ -423,6 +423,7 @@ private fun SyllabarySelector(
         ) {
             Silabario.allValues.forEach { silabario ->
                 SimpleSegmentedButton(
+                    modifier = Modifier.weight(1f),
                     selected = silabario == selectedSilabario,
                     onClick = {
                         selectedSilabario = silabario
@@ -450,6 +451,7 @@ private fun SyllabarySelector(
             // Always show basic, diacritics, and digraphs
             Nivel.basico.let { nivel ->
                 SimpleSegmentedButton(
+                    modifier = Modifier.weight(1f),
                     selected = nivel == selectedNivel,
                     onClick = {
                         selectedNivel = nivel
@@ -462,6 +464,7 @@ private fun SyllabarySelector(
 
             Nivel.tenten.let { nivel ->
                 SimpleSegmentedButton(
+                    modifier = Modifier.weight(1f),
                     selected = nivel == selectedNivel,
                     onClick = {
                         selectedNivel = nivel
@@ -474,6 +477,7 @@ private fun SyllabarySelector(
 
             Nivel.compuestos.let { nivel ->
                 SimpleSegmentedButton(
+                    modifier = Modifier.weight(1f),
                     selected = nivel == selectedNivel,
                     onClick = {
                         selectedNivel = nivel
@@ -488,6 +492,7 @@ private fun SyllabarySelector(
             if (selectedSilabario == Silabario.katakana) {
                 Nivel.extra.let { nivel ->
                     SimpleSegmentedButton(
+                        modifier = Modifier.weight(1f),
                         selected = nivel == selectedNivel,
                         onClick = {
                             selectedNivel = nivel
@@ -516,6 +521,7 @@ private fun FontSelector(
     ) {
         Fuente.allValues.forEach { fuente ->
             SimpleSegmentedButton(
+                modifier = Modifier.weight(1f),
                 selected = fuente == viewModel.fuenteSeleccionada,
                 onClick = { viewModel.setFuenteSeleccionada(fuente) }
             ) {
@@ -620,10 +626,11 @@ private fun TimerStepper(
 
 /**
  * Simple segmented button that doesn't require a row scope.
- * Replaces SegmentedButton which requires SingleChoiceSegmentedButtonRowScope.
+ * Uses .weight(1f) in Row for proper horizontal distribution.
  */
 @Composable
 private fun SimpleSegmentedButton(
+    modifier: Modifier = Modifier,
     selected: Boolean,
     onClick: () -> Unit,
     content: @Composable () -> Unit
@@ -631,8 +638,7 @@ private fun SimpleSegmentedButton(
     val shape = RoundedCornerShape(8.dp)
 
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = modifier
             .height(40.dp)
             .clip(shape)
             .background(if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant)
