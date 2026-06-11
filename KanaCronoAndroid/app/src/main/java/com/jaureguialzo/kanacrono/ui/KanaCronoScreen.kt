@@ -35,7 +35,7 @@ import com.jaureguialzo.kanacrono.data.Silabario
 private fun getKyokashoFontFamily(): FontFamily {
     return FontFamily(
         Font(
-            path = "fonts/kyokasho.ttc",
+            path = "fonts/kyokasho.ttf",
             assetManager = LocalContext.current.assets,
             weight = FontWeight.Medium
         )
