@@ -3,27 +3,27 @@
     <string name="app_name">KanaCrono</string>
 
     <!-- Settings -->
-    <string name="SETTINGS_TITLE">Settings</string>
-    <string name="SETTINGS_SYLLABARY">Syllabary</string>
-    <string name="SETTINGS_FONT">Font</string>
-    <string name="SETTINGS_VISIBILITY">Visibility</string>
-    <string name="SETTINGS_TIME">Time</string>
+    <string name="SETTINGS_TITLE">Ajustes</string>
+    <string name="SETTINGS_SYLLABARY">Silabario</string>
+    <string name="SETTINGS_FONT">Fuente</string>
+    <string name="SETTINGS_VISIBILITY">Visibilidad</string>
+    <string name="SETTINGS_TIME">Tiempo</string>
 
     <!-- Pickers -->
     <string name="PICKER_SYLLABARY_HIRAGANA">Hiragana</string>
     <string name="PICKER_SYLLABARY_KATAKANA">Katakana</string>
-    <string name="PICKER_LEVEL">Level</string>
+    <string name="PICKER_LEVEL">Nivel</string>
 
     <!-- Levels -->
-    <string name="LEVEL_BASIC">Basic</string>
-    <string name="LEVEL_DIACRITICS">Diacritics</string>
-    <string name="LEVEL_DIGRAPHS">Digraphs</string>
+    <string name="LEVEL_BASIC">Básico</string>
+    <string name="LEVEL_DIACRITICS">Diacríticos</string>
+    <string name="LEVEL_DIGRAPHS">Dígrafos</string>
     <string name="LEVEL_EXTRA">Extra</string>
 
     <!-- Font -->
-    <string name="PICKER_FONT">Font</string>
+    <string name="PICKER_FONT">Fuente</string>
     <string name="FONT_NORMAL">Normal</string>
-    <string name="FONT_CURSIVE">Cursive</string>
+    <string name="FONT_CURSIVE">Cursiva</string>
 
     <!-- Visibility -->
     <string name="VISIBLE_KANA">Kana</string>

@@ -1,6 +1,11 @@
-package com.jaureguialzo.kanacrono
+package com.jaureguialzo.kanacrono.data
 
-import java.util.*
+/**
+ * Datos de los silabarios japoneses y lógica de selección aleatoria.
+ * Réplica exacta de Silabarios.swift de la versión iOS.
+ */
+
+// MARK: - Datos de silabarios (exactamente como iOS)
 
 val hiragana_basico = mapOf(
     "あ" to "a", "い" to "i", "う" to "u", "え" to "e", "お" to "o",
@@ -77,47 +82,84 @@ val katakana_compuestos = mapOf(
 val katakana_extra = mapOf(
     "ファ" to "fa", "フィ" to "fi", "フェ" to "fe", "フォ" to "fo",
     "ティ" to "ti", "トゥ" to "tu",
-    "ディ" to "di",
-    "ヴァ" to "va", "ヴィ" to "vi", "ヴェ" to "ve", "ヴォ" to "vo",
-    "ウィ" to "wi", "ウォ" to "wo",
-) // 13
+    "ディ" to "di", "ドゥ" to "du",
+    "ヴァ" to "va", "ヴィ" to "vi", "ヴ" to "vu", "ヴェ" to "ve", "ヴォ" to "vo",
+    "ウィ" to "wi", "ウェ" to "we", "ウォ" to "wo",
+    "シェ" to "she",
+    "チェ" to "che",
+    "ジェ" to "je",
+) // 19
+
+// MARK: - Modelos de dominio
 
 enum class Silabario {
-    hiragana, katakana
+    hiragana, katakana;
+
+    companion object {
+        val allValues = values()
+    }
 }
 
 enum class Nivel {
-    basico, tenten, compuestos
+    basico, tenten, compuestos, extra;
+
+    companion object {
+        val allValues = values()
+    }
 }
 
-fun tuplaKana(
-    silabario: Silabario = Silabario.hiragana, nivel: Nivel = Nivel.basico
-): Pair<String, String> {
+enum class Fuente {
+    normal, cursiva;
 
-    val random = Random()
+    companion object {
+        val allValues = values()
+    }
+}
 
-    val union = when (silabario) {
-        Silabario.hiragana -> when (nivel) {
-            Nivel.basico -> hiragana_basico.asSequence()
-            Nivel.tenten -> (
-                    hiragana_basico.asSequence() + hiragana_tenten.asSequence()
-                    ).distinct()
-            Nivel.compuestos -> (
-                    hiragana_basico.asSequence() + hiragana_tenten.asSequence() + hiragana_compuestos.asSequence()
-                    ).distinct()
+// MARK: - Lógica de selección (exactamente como iOS)
+
+/**
+ * Devuelve un array de n tuplas del tipo (kana, romaji) extraídas del silabario seleccionado.
+ * Sin repetición de lectura (romaji).
+ */
+fun tuplasKana(
+    cantidad: Int = 1,
+    silabario: Silabario = Silabario.hiragana,
+    nivel: Nivel = Nivel.basico
+): List<Pair<String, String>> {
+
+    val result = mutableListOf<Pair<String, String>>()
+
+    var i = 0
+    while (i < cantidad) {
+        val entry: Map.Entry<String, String>
+
+        when (silabario) {
+            Silabario.hiragana -> {
+                val combined = when (nivel) {
+                    Nivel.basico -> hiragana_basico
+                    Nivel.tenten -> hiragana_basico + hiragana_tenten
+                    Nivel.compuestos, Nivel.extra -> hiragana_basico + hiragana_tenten + hiragana_compuestos
+                }
+                entry = combined.entries.random()
+            }
+            Silabario.katakana -> {
+                val combined = when (nivel) {
+                    Nivel.basico -> katakana_basico
+                    Nivel.tenten -> katakana_basico + katakana_tenten
+                    Nivel.compuestos -> katakana_basico + katakana_tenten + katakana_compuestos
+                    Nivel.extra -> katakana_basico + katakana_tenten + katakana_compuestos + katakana_extra
+                }
+                entry = combined.entries.random()
+            }
         }
-        Silabario.katakana -> when (nivel) {
-            Nivel.basico -> katakana_basico.asSequence()
-            Nivel.tenten -> (
-                    katakana_basico.asSequence() + katakana_tenten.asSequence()
-                    ).distinct()
-            Nivel.compuestos -> (
-                    katakana_basico.asSequence() + katakana_tenten.asSequence() + katakana_compuestos.asSequence() + katakana_extra.asSequence()
-                    ).distinct()
+
+        // Si ya existe el valor romaji de la tupla, no añadirla
+        if (!result.any { it.second == entry.value }) {
+            result.add(entry.key to entry.value)
+            i++
         }
     }
 
-    val aleatorio = union.asSequence().elementAt(random.nextInt(union.count()))
-
-    return Pair(aleatorio.key, aleatorio.value)
+    return result
 }

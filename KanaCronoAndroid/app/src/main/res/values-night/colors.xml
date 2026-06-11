@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores dark mode: invertidos respecto a light (como iOS) -->
+    <color name="kana_fondo">#3F628C</color>
+    <color name="kana_accent">#FFCC00</color>
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
+</resources>
