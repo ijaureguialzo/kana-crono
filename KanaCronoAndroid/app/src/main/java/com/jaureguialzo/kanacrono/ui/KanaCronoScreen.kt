@@ -17,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -25,6 +27,20 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jaureguialzo.kanacrono.data.Fuente
 import com.jaureguialzo.kanacrono.data.Nivel
 import com.jaureguialzo.kanacrono.data.Silabario
+
+/**
+ * Carga la fuente cursiva Kyokasho desde assets (como YuKyo-Medium en iOS).
+ */
+@Composable
+private fun getKyokashoFontFamily(): FontFamily {
+    return FontFamily(
+        Font(
+            path = "fonts/kyokasho.ttc",
+            assetManager = LocalContext.current.assets,
+            weight = FontWeight.Medium
+        )
+    )
+}
 
 /**
  * Helper para resolver strings de recursos por nombre (bypass del R class en AGP 9.0).
@@ -260,6 +276,7 @@ private fun KanaDisplay(viewModel: KanaCronoViewModel) {
     ) {
         Text(
             text = kana,
+            fontFamily = if (viewModel.fuenteSeleccionada == Fuente.cursiva) getKyokashoFontFamily() else null,
             fontSize = if (size.value > 200) 100.sp else 72.sp,
             fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSurface,
