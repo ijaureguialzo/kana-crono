@@ -221,13 +221,13 @@ private fun TimerBar(viewModel: KanaCronoViewModel) {
                 .clickable(onClick = { viewModel.revelarTodoTemporal() })
         )
 
-        // Next/Skip button (como forward.fill en iOS)
+        // Next/Skip button (como forward.fill en iOS — fast forward)
         IconButton(
             onClick = { viewModel.avanzarKana() },
             modifier = Modifier.size(24.dp)
         ) {
             Icon(
-                imageVector = Icons.Default.SkipNext,
+                imageVector = Icons.Default.FastForward,
                 contentDescription = "Next",
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(18.dp)
