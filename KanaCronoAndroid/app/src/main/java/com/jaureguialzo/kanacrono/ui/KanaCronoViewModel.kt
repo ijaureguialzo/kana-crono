@@ -67,6 +67,7 @@ class KanaCronoViewModel : ViewModel() {
     init {
         kanaAleatorio()
         timeRemaining = segundos
+        iniciarReloj() // Arranca automáticamente como en iOS
     }
 
     // MARK: - Lógica de visibilidad (como todosOff en iOS)
