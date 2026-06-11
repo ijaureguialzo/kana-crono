@@ -1,5 +1,6 @@
 package com.jaureguialzo.kanacrono.ui
 
+import android.content.Context
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import androidx.compose.foundation.background
@@ -24,7 +25,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jaureguialzo.kanacrono.data.Fuente
 import com.jaureguialzo.kanacrono.data.Nivel
 import com.jaureguialzo.kanacrono.data.Silabario
-import java.util.Locale
+
+/**
+ * Helper para resolver strings de recursos por nombre (bypass del R class en AGP 9.0).
+ */
+private fun Context.getStringByName(name: String): String {
+    val resId = resources.getIdentifier(name, "string", packageName)
+    return if (resId != 0) getString(resId) else "[$name]"
+}
 
 /**
  * Pantalla principal de KanaCrono.
@@ -53,7 +61,9 @@ fun KanaCronoScreen(
             onDismissRequest = { showSettings = false },
             dragHandle = { SettingsDragHandle() }
         ) {
+            val getString: (String) -> String = { context.getStringByName(it) }
             SettingsContent(
+                getString = getString,
                 viewModel = viewModel,
                 onDismiss = { showSettings = false }
             )
@@ -87,6 +97,7 @@ private fun KanaCronoContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(androidx.compose.ui.graphics.Color.White)
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = if (isLandscape) Arrangement.SpaceEvenly else Arrangement.Center
@@ -120,7 +131,8 @@ private fun KanaCronoContent(
         Spacer(modifier = if (isLandscape) Modifier.weight(1f) else Modifier.height(8.dp))
 
         // Settings button (bottom)
-        SettingsButton(onClick = { onShowSettingsChange(true) })
+        val getString: (String) -> String = { context.getStringByName(it) }
+        SettingsButton(onClick = { onShowSettingsChange(true) }, getString = getString)
     }
 
     // Audio playback when kana changes and audio is enabled
@@ -134,7 +146,7 @@ private fun KanaCronoContent(
 
                 ttsObj = TextToSpeech(context) { status ->
                     if (status == TextToSpeech.SUCCESS) {
-                        val result = ttsObj!!.setLanguage(Locale.JAPANESE)
+                        val result = ttsObj!!.setLanguage(java.util.Locale.JAPANESE)
                         if (result != TextToSpeech.LANG_MISSING_DATA &&
                             result != TextToSpeech.LANG_NOT_SUPPORTED) {
                             ttsObj!!.setSpeechRate(0.5f) // AVSpeechUtteranceMinimumSpeechRate
@@ -304,14 +316,14 @@ private fun RomajiDisplay(viewModel: KanaCronoViewModel) {
 // MARK: - Settings Button (como BotonAjustes en iOS)
 
 @Composable
-private fun SettingsButton(onClick: () -> Unit) {
+private fun SettingsButton(onClick: () -> Unit, getString: (String) -> String) {
     IconButton(
         onClick = onClick,
         modifier = Modifier.padding(bottom = 16.dp)
     ) {
         Icon(
             imageVector = Icons.Default.Settings,
-            contentDescription = "Settings",
+            contentDescription = getString("settings_close"),
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(28.dp)
         )
@@ -322,6 +334,7 @@ private fun SettingsButton(onClick: () -> Unit) {
 
 @Composable
 private fun SettingsContent(
+    getString: (String) -> String,
     viewModel: KanaCronoViewModel,
     onDismiss: () -> Unit
 ) {
@@ -332,49 +345,49 @@ private fun SettingsContent(
     ) {
         // Syllabary section (como Selectores en iOS)
         Text(
-            text = "SETTINGS_SYLLABARY",
+            text = getString("settings_syllabary"),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(vertical = 8.dp)
         )
 
-        SyllabarySelector(viewModel = viewModel)
+        SyllabarySelector(getString = getString, viewModel = viewModel)
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // Font section (como SelectorFuente en iOS)
         Text(
-            text = "SETTINGS_FONT",
+            text = getString("settings_font"),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(vertical = 8.dp)
         )
 
-        FontSelector(viewModel = viewModel)
+        FontSelector(getString = getString, viewModel = viewModel)
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // Visibility section (como OpcionesVisibilidad en iOS)
         Text(
-            text = "SETTINGS_VISIBILITY",
+            text = getString("settings_visibility"),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(vertical = 8.dp)
         )
 
-        VisibilityOptions(viewModel = viewModel)
+        VisibilityOptions(getString = getString, viewModel = viewModel)
 
         Spacer(modifier = Modifier.height(16.dp))
 
         // Timer section (como StepperSegundos en iOS)
         Text(
-            text = "SETTINGS_TIME",
+            text = getString("settings_time"),
             style = MaterialTheme.typography.titleSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(vertical = 8.dp)
         )
 
-        TimerStepper(viewModel = viewModel)
+        TimerStepper(getString = getString, viewModel = viewModel)
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -386,7 +399,7 @@ private fun SettingsContent(
             TextButton(onClick = onDismiss) {
                 Icon(
                     imageVector = Icons.Default.Close,
-                    contentDescription = "Close",
+                    contentDescription = getString("settings_close"),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -395,7 +408,10 @@ private fun SettingsContent(
 }
 
 @Composable
-private fun SyllabarySelector(viewModel: KanaCronoViewModel) {
+private fun SyllabarySelector(
+    getString: (String) -> String,
+    viewModel: KanaCronoViewModel
+) {
     var selectedSilabario by remember { mutableStateOf(viewModel.silabarioSeleccionado) }
     var selectedNivel by remember { mutableStateOf(viewModel.nivelSeleccionado) }
 
@@ -415,8 +431,8 @@ private fun SyllabarySelector(viewModel: KanaCronoViewModel) {
                 ) {
                     Text(
                         text = when (silabario) {
-                            Silabario.hiragana -> "Hiragana"
-                            Silabario.katakana -> "Katakana"
+                            Silabario.hiragana -> getString("syllabary_hiragana")
+                            Silabario.katakana -> getString("syllabary_katakana")
                         },
                         style = MaterialTheme.typography.bodyMedium
                     )
@@ -440,7 +456,7 @@ private fun SyllabarySelector(viewModel: KanaCronoViewModel) {
                         viewModel.setNivelSeleccionado(nivel)
                     }
                 ) {
-                    Text("Basic", style = MaterialTheme.typography.bodyMedium)
+                    Text(getString("level_basic"), style = MaterialTheme.typography.bodyMedium)
                 }
             }
 
@@ -452,7 +468,7 @@ private fun SyllabarySelector(viewModel: KanaCronoViewModel) {
                         viewModel.setNivelSeleccionado(nivel)
                     }
                 ) {
-                    Text("Diacritics", style = MaterialTheme.typography.bodyMedium)
+                    Text(getString("level_tenten"), style = MaterialTheme.typography.bodyMedium)
                 }
             }
 
@@ -464,7 +480,7 @@ private fun SyllabarySelector(viewModel: KanaCronoViewModel) {
                         viewModel.setNivelSeleccionado(nivel)
                     }
                 ) {
-                    Text("Digraphs", style = MaterialTheme.typography.bodyMedium)
+                    Text(getString("level_compuestos"), style = MaterialTheme.typography.bodyMedium)
                 }
             }
 
@@ -478,7 +494,7 @@ private fun SyllabarySelector(viewModel: KanaCronoViewModel) {
                             viewModel.setNivelSeleccionado(nivel)
                         }
                     ) {
-                        Text("Extra", style = MaterialTheme.typography.bodyMedium)
+                        Text(getString("level_extra"), style = MaterialTheme.typography.bodyMedium)
                     }
                 }
             } else {
@@ -490,7 +506,10 @@ private fun SyllabarySelector(viewModel: KanaCronoViewModel) {
 }
 
 @Composable
-private fun FontSelector(viewModel: KanaCronoViewModel) {
+private fun FontSelector(
+    getString: (String) -> String,
+    viewModel: KanaCronoViewModel
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(4.dp)
@@ -502,8 +521,8 @@ private fun FontSelector(viewModel: KanaCronoViewModel) {
             ) {
                 Text(
                     text = when (fuente) {
-                        Fuente.normal -> "Normal"
-                        Fuente.cursiva -> "Cursive"
+                        Fuente.normal -> getString("font_normal")
+                        Fuente.cursiva -> getString("font_cursive")
                     },
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -513,7 +532,10 @@ private fun FontSelector(viewModel: KanaCronoViewModel) {
 }
 
 @Composable
-private fun VisibilityOptions(viewModel: KanaCronoViewModel) {
+private fun VisibilityOptions(
+    getString: (String) -> String,
+    viewModel: KanaCronoViewModel
+) {
     Column {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -524,7 +546,7 @@ private fun VisibilityOptions(viewModel: KanaCronoViewModel) {
                     checked = viewModel.verKana,
                     onCheckedChange = { viewModel.setVerKana(it) }
                 )
-                Text("Kana", style = MaterialTheme.typography.labelSmall)
+                Text(getString("visibility_kana"), style = MaterialTheme.typography.labelSmall)
             }
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -532,7 +554,7 @@ private fun VisibilityOptions(viewModel: KanaCronoViewModel) {
                     checked = viewModel.verRomaji,
                     onCheckedChange = { viewModel.setVerRomaji(it) }
                 )
-                Text("Romaji", style = MaterialTheme.typography.labelSmall)
+                Text(getString("visibility_romaji"), style = MaterialTheme.typography.labelSmall)
             }
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -540,14 +562,17 @@ private fun VisibilityOptions(viewModel: KanaCronoViewModel) {
                     checked = viewModel.audioEnabled,
                     onCheckedChange = { viewModel.setAudioEnabled(it) }
                 )
-                Text("Audio", style = MaterialTheme.typography.labelSmall)
+                Text(getString("visibility_audio"), style = MaterialTheme.typography.labelSmall)
             }
         }
     }
 }
 
 @Composable
-private fun TimerStepper(viewModel: KanaCronoViewModel) {
+private fun TimerStepper(
+    getString: (String) -> String,
+    viewModel: KanaCronoViewModel
+) {
     val currentSeconds = viewModel.segundos
 
     Row(
@@ -569,9 +594,9 @@ private fun TimerStepper(viewModel: KanaCronoViewModel) {
             )
         }
 
-        // Timer value display
+        // Timer value display with localized suffix
         Text(
-            text = "$currentSeconds s",
+            text = "$currentSeconds${getString("time_suffix")}",
             fontSize = 18.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.padding(horizontal = 16.dp)

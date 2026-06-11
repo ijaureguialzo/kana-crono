@@ -3,33 +3,30 @@
     <string name="app_name">KanaCrono</string>
 
     <!-- Settings -->
-    <string name="SETTINGS_TITLE">Ajustes</string>
-    <string name="SETTINGS_SYLLABARY">Silabario</string>
-    <string name="SETTINGS_FONT">Fuente</string>
-    <string name="SETTINGS_VISIBILITY">Visibilidad</string>
-    <string name="SETTINGS_TIME">Tiempo</string>
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_syllabary">Silabario</string>
+    <string name="settings_font">Fuente</string>
+    <string name="settings_visibility">Visibilidad</string>
+    <string name="settings_time">Tiempo</string>
+    <string name="settings_close">Cerrar</string>
 
     <!-- Pickers -->
-    <string name="PICKER_SYLLABARY_HIRAGANA">Hiragana</string>
-    <string name="PICKER_SYLLABARY_KATAKANA">Katakana</string>
-    <string name="PICKER_LEVEL">Nivel</string>
-
-    <!-- Levels -->
-    <string name="LEVEL_BASIC">Básico</string>
-    <string name="LEVEL_DIACRITICS">Diacríticos</string>
-    <string name="LEVEL_DIGRAPHS">Dígrafos</string>
-    <string name="LEVEL_EXTRA">Extra</string>
+    <string name="syllabary_hiragana">Hiragana</string>
+    <string name="syllabary_katakana">Katakana</string>
+    <string name="level_basic">Básico</string>
+    <string name="level_tenten">Diacríticos</string>
+    <string name="level_compuestos">Dígrafos</string>
+    <string name="level_extra">Extra</string>
 
     <!-- Font -->
-    <string name="PICKER_FONT">Fuente</string>
-    <string name="FONT_NORMAL">Normal</string>
-    <string name="FONT_CURSIVE">Cursiva</string>
+    <string name="font_normal">Normal</string>
+    <string name="font_cursive">Cursiva</string>
 
     <!-- Visibility -->
-    <string name="VISIBLE_KANA">Kana</string>
-    <string name="VISIBLE_ROMAJI">Romaji</string>
-    <string name="AUDIO_ENABLED">Audio</string>
+    <string name="visibility_kana">Kana</string>
+    <string name="visibility_romaji">Romaji</string>
+    <string name="visibility_audio">Audio</string>
 
     <!-- Timer -->
-    <string name="SECONDS_FORMAT">%d s</string>
+    <string name="time_suffix"> s</string>
 </resources>
