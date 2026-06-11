@@ -194,43 +194,43 @@ private fun TimerBar(viewModel: KanaCronoViewModel) {
 
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Play/Pause button (como en iOS)
         IconButton(
             onClick = { viewModel.toggleTimerRunning() },
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(24.dp)
         ) {
             Icon(
                 imageVector = if (running) Icons.Default.Pause else Icons.Default.PlayArrow,
                 contentDescription = if (running) "Pause" else "Play",
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.size(28.dp)
+                modifier = Modifier.size(18.dp)
             )
         }
 
-        // Timer display (tap to reveal all)
+        // Timer display (tap to reveal all, como en iOS)
         Text(
             text = "$time",
-            fontSize = 36.sp,
-            fontWeight = FontWeight.Medium,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Normal,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.clickable(onClick = {
-                viewModel.revelarTodoTemporal()
-            })
+            modifier = Modifier
+                .padding(horizontal = 4.dp)
+                .clickable(onClick = { viewModel.revelarTodoTemporal() })
         )
 
         // Next/Skip button (como forward.fill en iOS)
         IconButton(
             onClick = { viewModel.avanzarKana() },
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(24.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.SkipNext,
                 contentDescription = "Next",
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.size(28.dp)
+                modifier = Modifier.size(18.dp)
             )
         }
     }
