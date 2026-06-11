@@ -519,9 +519,6 @@ private fun SyllabarySelector(
                         Text(getString("level_extra"), style = MaterialTheme.typography.bodyMedium)
                     }
                 }
-            } else {
-                // Spacer to fill the space when extra is hidden (como iOS)
-                Spacer(modifier = Modifier.weight(1f))
             }
         }
     }
