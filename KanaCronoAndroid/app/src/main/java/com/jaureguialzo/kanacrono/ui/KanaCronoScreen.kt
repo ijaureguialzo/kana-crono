@@ -246,11 +246,11 @@ private fun KanaDisplay(viewModel: KanaCronoViewModel) {
     val screenWidth = LocalContext.current.resources.displayMetrics.widthPixels.toFloat()
     val screenHeight = LocalContext.current.resources.displayMetrics.heightPixels.toFloat()
 
-    // Size: 66% of the smaller screen dimension (como iOS)
+    // Size: 66% of the smaller screen dimension, capped to leave room for romaji (como iOS)
     val size = if (screenWidth > screenHeight) {
-        (screenHeight * 0.66).dp
+        (screenHeight * 0.66).dp.coerceAtMost(280.dp)
     } else {
-        (screenWidth * 0.66).dp
+        (screenWidth * 0.66).dp.coerceAtMost(280.dp)
     }
 
     val isDark = LocalContext.current.isDarkTheme()
@@ -294,11 +294,11 @@ private fun RomajiDisplay(viewModel: KanaCronoViewModel) {
     val screenWidth = LocalContext.current.resources.displayMetrics.widthPixels.toFloat()
     val screenHeight = LocalContext.current.resources.displayMetrics.heightPixels.toFloat()
 
-    // Size: 66% of the smaller screen dimension (como iOS)
+    // Size: 66% of the smaller screen dimension, capped to leave room for romaji (como iOS)
     val size = if (screenWidth > screenHeight) {
-        (screenHeight * 0.66).dp
+        (screenHeight * 0.66).dp.coerceAtMost(280.dp)
     } else {
-        (screenWidth * 0.66).dp
+        (screenWidth * 0.66).dp.coerceAtMost(280.dp)
     }
 
     val isDark = LocalContext.current.isDarkTheme()
